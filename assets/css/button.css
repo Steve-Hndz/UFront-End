@@ -1,0 +1,39 @@
+@import url('root.css');
+
+.button{
+    display: inline-flex;
+    align-items: center;
+    height: 2.5em;
+    padding: .8em;
+    margin-right: .5em;
+    font-size: var(--font-size-medium);
+    font-weight: 600;
+    border-radius: 1.5em;
+    border: none;
+    cursor: pointer;
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.button:hover{
+    background-color: var(--color-accent-dark);
+    box-shadow: 0 0 20px var(--color-accent-light);
+}
+
+.button--outline{
+    background: none;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    transition: .3s all;
+    
+}
+
+.button__icon{
+    width: 25px;
+    margin: 0 .4em;  
+}
+
+.button--outline:hover{
+    background-color: var(--color-accent);
+    color: white;
+}
