@@ -34,7 +34,7 @@ $controller = $controller . "Controller";
 if(is_file($fullController))
 {
     require_once ($fullController);
-    $printController = new $controller();
+    $printController = new $controller($database);
 }
 else
 {
