@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/jeringa.svg">
     <!-- <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/style.css"> -->
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/root.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
-    <title>TPI -render con OOP-</title>
+    <title>Donantes covid-19</title>
 </head>
 
 <body>
@@ -16,7 +17,8 @@
         <nav class="navbar">
             <div class="navbar__logo">
                 <a href="home.php" class="navbar__a">
-                    INICIO PAGINA
+                <img src="assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
+                    INICIO
                 </a>
             </div>
 
