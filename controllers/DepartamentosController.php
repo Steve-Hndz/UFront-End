@@ -2,10 +2,9 @@
 
 class DepartamentosController
 {
-  private $db;
-  public function __construct($database)
+  public function __construct()
   {
-    $this->db = $database->getConnection();
+    parent::__construct();    
   }
 
   public function list()
@@ -14,7 +13,7 @@ class DepartamentosController
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
     echo $limit . "<br>";
-    $departamento = new Departamento($this->db);
+    $departamento = new Departamento();
     $list = $departamento->list($page, $limit);
     var_dump($list);
   }
@@ -25,7 +24,7 @@ class DepartamentosController
     if (!isset($_POST['name'])) {
       // $name = $_POST['name'] ;
       $name = "test" ;
-      $departamento = new Departamento($this->db);
+      $departamento = new Departamento();
       $createResult = $departamento->create($name);
       var_dump($createResult);
     }

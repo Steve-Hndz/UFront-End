@@ -1,13 +1,14 @@
 <?php
 
-class Donante {
-  private $db;
+require_once "database/MySqlConnection.php";
+
+class Donante extends MySqlConnection{
 
   const TABLE_NAME = 'tbl_donantes';
 
-  public function __construct($database)
+  public function __construct()
   {
-    $this->db = $database;
+    parent::__construct();
   }
 
   public function list($page, $limit)

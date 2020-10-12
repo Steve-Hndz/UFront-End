@@ -1,14 +1,13 @@
 <?php
+require_once "database/MySqlConnection.php";
 
-class Departamento
+class Departamento extends MySqlConnection
 {
-  private $db;
-
   const TABLE_NAME = 'tbl_departamento';
 
-  public function __construct($database)
+  public function __construct()
   {
-    $this->db = $database;
+    parent::__construct();    
   }
 
   public function list($page, $limit)
@@ -20,7 +19,6 @@ class Departamento
     $sql = "SELECT * FROM " . self::TABLE_NAME . " limit " . $limit . " offset " . $offset;
     echo $sql;
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
-    
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
       $data = array();
       while ($obj = $result->fetch_object()) {
