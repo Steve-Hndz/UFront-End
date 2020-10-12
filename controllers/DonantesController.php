@@ -2,10 +2,9 @@
 
 class DonantesController
 {
-  private $db;
   public function __construct($database)
   {
-    $this->db = $database->getConnection();
+    
   }
 
   public function list()
@@ -14,7 +13,7 @@ class DonantesController
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
     echo $limit . "<br>";
-    $donantes = new Donante($this->db);
+    $donantes = new Donante();
     $list = $donantes->list($page, $limit);
     var_dump($list);
   }
@@ -46,7 +45,7 @@ class DonantesController
         'telephone' => "71253614"
       ];
       
-      $donante = new Donante($this->db);
+      $donante = new Donante();
       $createResult = $donante->create($data);
       var_dump($createResult);
     }
