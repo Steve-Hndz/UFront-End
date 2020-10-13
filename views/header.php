@@ -1,14 +1,37 @@
+<?php
+    $selected = 'Home';
+    if (isset($_GET['controller'])) {
+        switch ($_GET['controller']) {
+            case 'About':
+                $selected = 'About';
+                break;
+            case 'Donantes':
+                $selected = 'Donantes';
+                break;
+            case 'Usuario':
+                $selected = 'Usuario';
+                break;
+            
+            default:
+                
+                break;
+        }
+    }
+    echo $selected
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/jeringa.svg">
     <!-- <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/style.css"> -->
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/root.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
-    <title>TPI -render con OOP-</title>
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/footer.css">
+    <title>Donantes covid-19</title>
 </head>
 
 <body>
@@ -16,23 +39,24 @@
         <nav class="navbar">
             <div class="navbar__logo">
                 <a href="home.php" class="navbar__a">
-                    INICIO PAGINA
+                <img src="<?=BASE_DIR?>assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
+                    INICIO
                 </a>
             </div>
 
             <div class="navbar__navegation">
                 <ul class="navbar__links">
                     <li class="navbar__link">
-                        <a href="home.php" class="navbar__a navbar__a--selected">Inicio</a>
+                        <a href="<?=BASE_DIR?>" class="navbar__a <?=($selected == 'Home')? 'navbar__a--selected': ''?>">Inicio</a>
                     </li>
                     <li class="navbar__link">
-                        <a href="about.php" class="navbar__a">Donantes</a>
+                        <a href="<?=BASE_DIR?>Donantes/list" class="navbar__a <?=($selected == 'Donantes')? 'navbar__a--selected': ''?>">Donantes</a>
                     </li>
                     <li class="navbar__link">
-                        <a href="contact.php" class="navbar__a">Registrar</a>
+                        <a href="<?=BASE_DIR?>Usuario/register" class="navbar__a <?=($selected == 'Usuario')? 'navbar__a--selected': ''?>">Registrar</a>
                     </li>
                     <li class="navbar__link">
-                        <a href="contact.php" class="navbar__a">Acerca de</a>
+                        <a href="<?=BASE_DIR?>About/showAbout" class="navbar__a <?=($selected == 'About')? 'navbar__a--selected': ''?>">Acerca de</a>
                     </li>
                 </ul>
             </div>

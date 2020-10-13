@@ -24,6 +24,15 @@
     /* width: 80px; */
     float: left;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar__logo-img{
+    width: 22px;
+    transform: translateY(4px);
 }
 
 .navbar__navegation{
