@@ -1,15 +1,15 @@
 <?php
-    $selected = 'home';
-    if (isset($_GET['Controller'])) {
-        switch ($_GET['Controller']) {
+    $selected = 'Home';
+    if (isset($_GET['controller'])) {
+        switch ($_GET['controller']) {
             case 'About':
                 $selected = 'About';
                 break;
             case 'Donantes':
                 $selected = 'Donantes';
                 break;
-            case 'Usuarios':
-                $selected = 'Usuarios';
+            case 'Usuario':
+                $selected = 'Usuario';
                 break;
             
             default:
@@ -17,6 +17,7 @@
                 break;
         }
     }
+    echo $selected
 ?>
 <!DOCTYPE html>
 <html lang="en">
