@@ -18,7 +18,7 @@ class Donante extends MySqlConnection{
     else $offset = ($page - 1) * $limit;
     // $sql = "SELECT * FROM " . self::TABLE_NAME;
     $sql = "SELECT * FROM " . self::TABLE_NAME . " limit " . $limit . " offset " . $offset;
-    echo $sql;
+    /* echo $sql; */
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
     
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {

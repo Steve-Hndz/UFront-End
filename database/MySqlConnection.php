@@ -17,9 +17,9 @@ class MySqlConnection extends Connection
 
     if ($this->db->connect_errno) {
       echo "Fallo al conectar a MySQL: " . $this->connection->connect_error;
-    } else {
+    } /* else {
       echo "database connected";
-    }
+    } */
   }
 
   public function disconnect()

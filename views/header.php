@@ -19,7 +19,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -49,7 +49,7 @@
                         <a href="<?=BASE_DIR?>" class="navbar__a <?=($selected == 'Home')? 'navbar__a--selected': ''?>">Inicio</a>
                     </li>
                     <li class="navbar__link">
-                        <a href="<?=BASE_DIR?>Donantes/list" class="navbar__a <?=($selected == 'Donantes')? 'navbar__a--selected': ''?>">Donantes</a>
+                        <a href="<?=BASE_DIR?>Donantes/showList" class="navbar__a <?=($selected == 'Donantes')? 'navbar__a--selected': ''?>">Donantes</a>
                     </li>
                     <li class="navbar__link">
                         <a href="<?=BASE_DIR?>Usuario/register" class="navbar__a <?=($selected == 'Usuario')? 'navbar__a--selected': ''?>">Registrar</a>

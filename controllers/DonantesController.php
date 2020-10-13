@@ -12,10 +12,15 @@ class DonantesController
     require_once "models/Donante.php";
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
-    echo $limit . "<br>";
+    /* echo $limit . "<br>"; */
     $donantes = new Donante();
     $list = $donantes->list($page, $limit);
-    var_dump($list);
+    /* var_dump($list); */
+    return $list;
+  }
+
+  public function showList(){
+    require_once 'views/donantes.php';
   }
 
   public function create()
