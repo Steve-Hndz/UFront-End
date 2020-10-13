@@ -1,0 +1,40 @@
+@import url('root.css');
+@import url('button.css');
+
+.presentation{
+   padding: 1em;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.presentation__container-title{
+    padding: 1em;
+    margin-top: -6em;
+    width: 40%;
+}
+
+.presentation__title{
+    font-size: var(--font-size-xbig);
+    color: var(--color-black);
+    margin: .8em 0;
+}
+
+.presentation__description{
+    font-size: var(--font-medium);
+    color: var(--color-black);
+    margin: .8em 0;
+}
+
+.presentation__buttons{
+    margin: 1.2em 0;
+}
+
+.presentation__container-img{
+    width: 60%;
+}
+
+.presentation__img{
+    width: 110%;
+}

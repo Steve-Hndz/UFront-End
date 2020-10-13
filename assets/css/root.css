@@ -1,0 +1,36 @@
+/* definicion de los colores, fuentes, etc... principales */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+:root {
+    /* colores */
+    --color-primary: #CCEAF4;
+    --color-gray: #A9A9A9;
+    --color-accent: #FF3B3F;
+    --color-black: #232323;
+    --color-light: #EFEFEF;
+    /* color variaciones */
+    --color-accent-dark: #da2225;
+    --color-accent-light: rgba(255, 59, 62, 0.2);
+    /* tamaño fuente */
+    --font-size-small: 14px;
+    --font-size-medium: 18px;
+    --font-size-big: 28px;
+    --font-size-xbig: 38px;
+}
+
+/* formateo de estilos */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+html, body {
+    margin-top: 2.2em;
+}
+
+body {
+    overflow-x: hidden;
+}
