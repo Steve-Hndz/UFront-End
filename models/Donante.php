@@ -16,7 +16,7 @@ class Donante extends MySqlConnection{
   private $estado_donante;
   private $prueba_donante;
 
-  public function setId_donante(){
+  public function setId_donante($id_donante){
     $this->id_donante = $id_donante;
   }
 
@@ -24,7 +24,7 @@ class Donante extends MySqlConnection{
     return $this->id_donante;
   }
 
-  public function setNombre_donante(){
+  public function setNombre_donante($nombre_donante){
     $this->nombre_donante = $nombre_donante;
   }
 
@@ -32,7 +32,7 @@ class Donante extends MySqlConnection{
     return $this->nombre_donante;
   }
 
-  public function setApellido_donante(){
+  public function setApellido_donante($apellido_donante){
     $this->apellido_donante = $apellido_donante;
   }
 
@@ -40,7 +40,7 @@ class Donante extends MySqlConnection{
     return $this->apellido_donante;
   }
 
-  public function setTelefono_donante(){
+  public function setTelefono_donante($telefono_donante){
     $this->telefono_donante = $telefono_donante;
   }
 
@@ -48,7 +48,7 @@ class Donante extends MySqlConnection{
     return $this->telefono_donante;
   }
 
-  public function setId_sangre(){
+  public function setId_sangre($id_sangre){
     $this->id_sangre = $id_sangre;
   }
 
@@ -56,7 +56,7 @@ class Donante extends MySqlConnection{
     return $this->id_sangre;
   }
 
-  public function setId_departamento(){
+  public function setId_departamento($id_departamento){
     $this->id_departamento = $id_departamento;
   }
 
@@ -64,7 +64,7 @@ class Donante extends MySqlConnection{
     return $this->id_departamento;
   }
 
-  public function setId_municipio(){
+  public function setId_municipio($id_municipio){
     $this->id_municipio = $id_municipio;
   }
 
@@ -72,7 +72,7 @@ class Donante extends MySqlConnection{
     return $this->id_municipio;
   }
 
-  public function setEstado_donante(){
+  public function setEstado_donante($estado_donante){
     $this->estado_donante = $estado_donante;
   }
 
@@ -80,7 +80,7 @@ class Donante extends MySqlConnection{
     return $this->estado_donante;
   }
 
-  public function setPrueba_donante(){
+  public function setPrueba_donante($prueba_donante){
     $this->prueba_donante = $prueba_donante;
   }
 

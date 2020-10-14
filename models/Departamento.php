@@ -8,7 +8,7 @@ class Departamento extends MySqlConnection
   private $id_departamento;
   private $nombre_departamento;
 
-  public function setId_departamento(){
+  public function setId_departamento($id_departamento){
       $this->id_departamento = $id_departamento;
     }
 
@@ -16,7 +16,7 @@ class Departamento extends MySqlConnection
       return $this->id_departamento;
     }
 
-    public function setNombre_departamento(){
+    public function setNombre_departamento($nombre_departamento){
       $this->nombre_departamento = $nombre_departamento;
     }
 
