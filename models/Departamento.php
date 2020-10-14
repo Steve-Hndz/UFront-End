@@ -5,6 +5,25 @@ class Departamento extends MySqlConnection
 {
   const TABLE_NAME = 'tbl_departamento';
 
+  private $id_departamento;
+  private $nombre_departamento;
+
+  public function setId_departamento(){
+      $this->id_departamento = $id_departamento;
+    }
+
+    public function getId_departamento(){
+      return $this->id_departamento;
+    }
+
+    public function setNombre_departamento(){
+      $this->nombre_departamento = $nombre_departamento;
+    }
+
+    public function getNombre_departamento(){
+      return $this->nombre_departamento;
+    }
+
   public function __construct()
   {
     parent::__construct();    
@@ -32,7 +51,7 @@ class Departamento extends MySqlConnection
   {
     $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_departamento = " . $id;
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
-    
+
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
       $data = array();
       while ($obj = $result->fetch_object()) {
