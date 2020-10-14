@@ -2,7 +2,7 @@
 
 class DonantesController
 {
-  public function __construct($database)
+  public function __construct()
   {
     
   }

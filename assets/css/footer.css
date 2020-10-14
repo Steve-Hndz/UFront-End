@@ -1,0 +1,11 @@
+@import url('root.css');
+
+.footer{
+    padding: 4em;
+    width: 100vw;
+    background-color: var(--color-light);
+}
+
+.footer__text{
+    font-size: var(--font-size-medium);
+}
