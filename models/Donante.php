@@ -93,14 +93,15 @@ class Donante extends MySqlConnection{
     parent::__construct();
   }
 
-  public function list($page, $limit)
+  public function list($page = 1, $limit = 20, $filter = [], $sort = [])
   {
-    if (!$limit) $limit = 20;
-    if (!$page) $offset = 0;
-    else $offset = ($page - 1) * $limit;
-    // $sql = "SELECT * FROM " . self::TABLE_NAME;
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " limit " . $limit . " offset " . $offset;
-    echo $sql;
+    
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT * FROM " . self::TABLE_NAME ;
+    $sql .= $this->createSqlFilter($filter);
+    $sql .= $this->crateSqlSort($sort);
+    $sql .= " limit " . $limit . " offset " . $offset;
+    echo $sql . "<br>";
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
     
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
@@ -112,6 +113,60 @@ class Donante extends MySqlConnection{
     }
   }
 
+  private function createSqlFilter($filter) {
+    $sql = "";
+    $filters = ['name']; // set available filters here
+    if (count($filter)) {
+      $i = 0;
+      foreach ($filter as $key => $value) {
+        $searchInFilters = array_search($key, $filters);
+        if ($searchInFilters === false) $searchInFilters = -1;
+        echo "<br>";
+        if ($searchInFilters >= 0  ) {
+          $sql .= ($i == 0 ) ? " WHERE " : " AND ";
+          switch ($key) {
+            case 'name':
+              $sql .= "nombre_donante LIKE '%" . $value ."%'"; 
+              break;
+            
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
+
+  private function crateSqlSort($rules) {
+    $sql = "";
+    $fields = ['id']; // set available filters here
+    if (count($rules)) {
+      $i = 0;
+      foreach ($rules as $key => $value) {
+        $searchInFilters = array_search($key, $fields);
+        if ($searchInFilters === false) $searchInFilters = -1;
+        echo "<br>";
+        if ($searchInFilters >= 0  ) {
+          $value = strtoupper($value);
+          if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";
+          switch ($key) {
+            case 'id':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " id_donante " . $value ." "; 
+              break;
+            
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
   public function get($id)
   {
     $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_departamento = " . $id;
