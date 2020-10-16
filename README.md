@@ -14,3 +14,19 @@ DB_NAME | name_db | database, name
 # Steps
 * copy this repository on c:/xampp/htdocs/web
 * import a sql file (basedir/database/sql) in phpMyAdmin
+
+# Uso de filtros
+
+```http
+{{HOST}}/web/Controller/action&filter[campo]=valor&filter[otroCampo]=valor
+```
+Los campos deben existir en la base de datos
+
+# Ordenamiento
+
+```http
+{{HOST}}/web/Controller/action&sort[campo]=[ASC|DESC]
+```
+
+Los campos deben existir en la base de datos
+- Los corchetes indican 
