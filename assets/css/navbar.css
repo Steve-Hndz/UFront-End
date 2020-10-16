@@ -1,17 +1,11 @@
 @import url('root.css');
 .navbar {
+    position: fixed;
     width: 100vw;
     height: 4rem;
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
     /* color */
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.349);
-    /* background: linear-gradient(var(--color-accent), rgba(0, 0, 0, 0)); */
-    color: white;
-    
+    background-color: var(--color-white);
     transition: all .3s;
     z-index: 100;
 }
@@ -24,7 +18,6 @@
     /* width: 80px; */
     float: left;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,27 +25,47 @@
 
 .navbar__logo-img{
     width: 22px;
+    margin-top: 20px;
+    margin-left: 1em;
+    margin-right: auto;
     transform: translateY(4px);
 }
 
-.navbar__navegation{
-    position: absolute;
-    right: 2rem;
-}
-
 .navbar__links{
-    position: relative;
-    float: center;
+    margin-right: 1em;
+    display: flex;
+    list-style: none;
+    width: 500px;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
 }
 
 .navbar__link{
-    display: inline-block;
-    margin: 0 1rem;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
-.navbar__a:hover{
-    color: var(--color-accent);
+.navbar__tittle{
+    color: var(--color-black);
+    text-decoration: none;
+    font-weight: 900;
+    font-size: var(--font-size-big);
+}
+
+.navbar__logo-tittle {
+    display: inline;
+}
+
+.navbar__h1{
+    margin-top: 17px;
+    margin-left: 10px;
+    color: var(--color-black);
+    text-decoration: none;
+    font-weight: 900;
+    font-size: var(--font-size-big);
+    text-align: center;
+    display: none;
 }
 
 .navbar__a{
@@ -61,6 +74,83 @@
     font-size: var(--font-size-medium);
 }
 
-.navbar__a--selected{
+.navbar__a:hover{
     color: var(--color-accent);
+}
+
+/* Aqui se maneja el link de la pagina actual*/
+.navbar__a--selected{
+    color: var(--color-black);
+    font-weight: 700;
+    background-color: var(--color-primary);
+    padding: 5px 20px;
+    border-radius: 25px;
+}
+
+@media (max-width: 768px) {
+    /* Asignar nueva posicion al navbar */
+    .navbar {
+        position: relative;
+    }
+
+    /* Los links se manejan aqui para mostrarse en la pantalla */
+    .navbar__links {
+        position: fixed;
+        background-color: var(--color-accent);
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        /* Estilo bubble */
+        clip-path: circle(0px at 90% -10%);
+        -webkit-clip-path: circle(0px at 90% -10%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+
+    /* Estilo de links al abrir con el boton hamburger */
+    .navbar__links.open {
+        clip-path: circle(1500px at 90% -10%);
+        -webkit-clip-path: circle(1500px at 90% -10%);
+        pointer-events: all;
+    }
+
+    .navbar__logo-tittle{
+        display: none;
+    }
+
+    .navbar__h1{
+        display: initial;
+    }
+
+    .navbar__a {
+        font-weight: 900;
+        font-size: var(--font-size-big);
+    }
+
+    .navbar__a:hover{
+        color: var(--color-light);
+    }
+
+    .navbar__a--selected{
+        color: var(--color-light);
+        background-color: var(--color-black);
+    }
+
+    /* Aqui se disena el boton hamburguer */
+    .hamburger {
+        z-index: 2;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+    }
+
+    /* Aqui se componen linea por linea */
+    .hamburger__line {
+        width: 30px;
+        height: 3px;
+        background-color: var(--color-black);
+        margin: 5px;
+    }
 }
