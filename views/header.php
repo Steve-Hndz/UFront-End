@@ -1,19 +1,17 @@
 <?php
-    $selected = 'home';
-    if (isset($_GET['Controller'])) {
-        switch ($_GET['Controller']) {
+    $selected = 'INICIO';
+    if (isset($_GET['controller'])) {
+        switch ($_GET['controller']) {
             case 'About':
-                $selected = 'About';
+                $selected = 'ACERCA DE';
                 break;
             case 'Donantes':
-                $selected = 'Donantes';
+                $selected = 'DONANTES';
                 break;
-            case 'Usuarios':
-                $selected = 'Usuarios';
+            case 'Usuario':
+                $selected = 'REGISTRO';
                 break;
-            
             default:
-                
                 break;
         }
     }
@@ -30,6 +28,7 @@
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/footer.css">
+
     <title>Donantes covid-19</title>
 </head>
 
@@ -37,27 +36,37 @@
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <a href="home.php" class="navbar__a">
+                <a href="home.php" class="navbar__tittle">
                 <img src="<?=BASE_DIR?>assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
-                    INICIO
+                    <p class="navbar__logo-tittle">U-Safe</p>
                 </a>
+
+                <div class="navbar__h1">
+                    <?php echo $selected; ?>
+                </div>
             </div>
 
-            <div class="navbar__navegation">
-                <ul class="navbar__links">
-                    <li class="navbar__link">
-                        <a href="<?=BASE_DIR?>" class="navbar__a <?=($selected == 'Home')? 'navbar__a--selected': ''?>">Inicio</a>
-                    </li>
-                    <li class="navbar__link">
-                        <a href="<?=BASE_DIR?>Donantes/showList" class="navbar__a <?=($selected == 'Donantes')? 'navbar__a--selected': ''?>">Donantes</a>
-                    </li>
-                    <li class="navbar__link">
-                        <a href="<?=BASE_DIR?>Usuario/register" class="navbar__a <?=($selected == 'Usuario')? 'navbar__a--selected': ''?>">Registrar</a>
-                    </li>
-                    <li class="navbar__link">
-                        <a href="<?=BASE_DIR?>About/showAbout" class="navbar__a <?=($selected == 'About')? 'navbar__a--selected': ''?>">Acerca de</a>
-                    </li>
-                </ul>
+            <div class="hamburger">
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
             </div>
+
+            <ul class="navbar__links">
+                <li class="navbar__link">
+                    <a href="<?=BASE_DIR?>" class="navbar__a <?=($selected == 'INICIO')? 'navbar__a--selected': ''?>">Inicio</a>
+                </li>
+                <li class="navbar__link">
+                    <a href="<?=BASE_DIR?>Donantes/list" class="navbar__a <?=($selected == 'DONANTES')? 'navbar__a--selected': ''?>">Donantes</a>
+                </li>
+                <li class="navbar__link">
+                    <a href="<?=BASE_DIR?>Usuario/register" class="navbar__a <?=($selected == 'REGISTRO')? 'navbar__a--selected': ''?>">Registrar</a>
+                </li>
+                <li class="navbar__link">
+                    <a href="<?=BASE_DIR?>About/showAbout" class="navbar__a <?=($selected == 'ACERCA DE')? 'navbar__a--selected': ''?>">Acerca de</a>
+                </li>
+            </ul>
         </nav>
     </header>
+
+<script type="text/javascript" src="<?=BASE_DIR;?>js/main.js"></script>
