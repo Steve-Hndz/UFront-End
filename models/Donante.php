@@ -101,7 +101,7 @@ class Donante extends MySqlConnection{
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->crateSqlSort($sort);
     $sql .= " limit " . $limit . " offset " . $offset;
-    echo $sql . "<br>";
+    // echo $sql . "<br>";
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
     
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
@@ -180,9 +180,10 @@ class Donante extends MySqlConnection{
       return $data;
     }
   }
-  public function create($data)
+  public function create()
   {
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) VALUES ('" . $data['name'] . "','" . $data['lastName'] . "'," . $data['status'] . "," . $data['department'] . ","  . $data['state'] . "," . $data['blood_id'] . "," . $data['test'] . ",'" . $data['telephone'] . "')";
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) VALUES 
+    ('" . $this->getNombre_donante() . "','" . $this->apellido_donante . "','Created'," . $this->id_departamento . ","  . $this->id_municipio . "," . $this->id_sangre . ",'" . $this->prueba_donante . "','" . $this->telefono_donante . "')";
     // $query = $this->db->prepare("INSERT INTO " . self::TABLE_NAME . " ""
     echo $sql . "<br>";
     if (!$result = $this->db->query($sql)) {
