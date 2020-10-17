@@ -68,5 +68,3 @@
             </ul>
         </nav>
     </header>
-
-<script type="text/javascript" src="<?=BASE_DIR;?>js/main.js"></script>

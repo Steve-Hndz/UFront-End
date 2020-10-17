@@ -11,7 +11,7 @@
 }
 
 .navbar:hover{
-    background-color: var(--color-light);
+    background-color: white;
 }
 
 .navbar__logo{
