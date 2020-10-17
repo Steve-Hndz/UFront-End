@@ -7,13 +7,11 @@
                 <p class="presentation__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque sed odio atque, dolores quia ipsum. Velit delectus dolore exercitationem atque ut doloribus, nobis aliquam. Fugit possimus obcaecati consequatur omnis incidunt!</p>
             </div>
             <div class="presentation__buttons">
-                <button class="button">
-                    <span class="button__text">Donantes</span>
+                <button class="button button--fill">
+                    Donantes
                 </button>
                 <button class="button button--outline">
-                    <span class="button__text">Registrarme</span>
-                    <img src="assets/images/arrow-right.svg" alt="flecha ir" class="button__icon">
-    
+                    Registrarme ➤
                 </button>
             </div>
         </div>
