@@ -101,7 +101,7 @@ class Donante extends MySqlConnection{
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->crateSqlSort($sort);
     $sql .= " limit " . $limit . " offset " . $offset;
-    echo $sql . "<br>";
+    // echo $sql . "<br>";
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
     
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
@@ -182,15 +182,14 @@ class Donante extends MySqlConnection{
   }
   public function create()
   {
-    try {
-      $sql = "INSERT INTO " . self::TABLE_NAME . " 
-      (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) 
-      VALUES (?,?,?,?,?,?,?,?)";
-      $query = $this->db->prepare($sql);
-      $query->bind_param("sssdddss", $this->nombre_donante, $this->apellido_donante, $this->telefono_donante, $this->id_sangre, $this->id_departamento, $this->id_municipio, $this->estado_donante, $this->prueba_donante);
-      $query->execute();
-    } catch (\Throwable $th) {
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) VALUES 
+    ('" . $this->getNombre_donante() . "','" . $this->apellido_donante . "','Created'," . $this->id_departamento . ","  . $this->id_municipio . "," . $this->id_sangre . ",'" . $this->prueba_donante . "','" . $this->telefono_donante . "')";
+    // $query = $this->db->prepare("INSERT INTO " . self::TABLE_NAME . " ""
+    echo $sql . "<br>";
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
     }
+    return $result;
   }
   public function update()
   {

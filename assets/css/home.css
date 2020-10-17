@@ -38,3 +38,11 @@
 .presentation__img{
     width: 110%;
 }
+
+@media (max-width: 768px) {
+    .presentation__buttons{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
