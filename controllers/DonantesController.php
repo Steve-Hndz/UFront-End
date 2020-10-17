@@ -25,6 +25,14 @@ class DonantesController
   {
     require_once "models/Donante.php";
     if (!isset($_POST['name'])) { // remove !
+      $donante = new Donante();
+      $donante->setNombre_donante($_POST['nombre_donante']);
+      $donante->setApellido_donante($_POST['apellido_donante']);
+      $donante->setTelefono_donante($_POST['telefono_donante']);
+      $donante->setId_sangre($_POST['id_sangre']);
+      $donante->setId_departamento($_POST['id_departamento']);
+      $donante->setId_municipio($_POST['id_municipio']);
+      $donante->setPrueba_donante($_POST['prueba_donante']);
       /*  UNCOMENT THIS BLOCK
       $data = [
         'name' => $_POST['nombre_donante'],

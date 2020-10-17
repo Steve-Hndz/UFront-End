@@ -180,15 +180,17 @@ class Donante extends MySqlConnection{
       return $data;
     }
   }
-  public function create($data)
+  public function create()
   {
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) VALUES ('" . $data['name'] . "','" . $data['lastName'] . "'," . $data['status'] . "," . $data['department'] . ","  . $data['state'] . "," . $data['blood_id'] . "," . $data['test'] . ",'" . $data['telephone'] . "')";
-    // $query = $this->db->prepare("INSERT INTO " . self::TABLE_NAME . " ""
-    echo $sql . "<br>";
-    if (!$result = $this->db->query($sql)) {
-      return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
+    try {
+      $sql = "INSERT INTO " . self::TABLE_NAME . " 
+      (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) 
+      VALUES (?,?,?,?,?,?,?,?)";
+      $query = $this->db->prepare($sql);
+      $query->bind_param("sssdddss", $this->nombre_donante, $this->apellido_donante, $this->telefono_donante, $this->id_sangre, $this->id_departamento, $this->id_municipio, $this->estado_donante, $this->prueba_donante);
+      $query->execute();
+    } catch (\Throwable $th) {
     }
-    return $result;
   }
   public function update()
   {
