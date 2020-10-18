@@ -28,7 +28,7 @@ class Donante extends MySqlConnection{
   }
 
   public function setContraseñaDonante($contraseña_donante){
-    $this->contraseña_donante = $contraseña_donante;
+    $this->contraseña_donante = password_hash($contraseña_donante, PASSWORD_DEFAULT);  
   }
 
   public function getContraseñaDonante(){

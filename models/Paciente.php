@@ -2,7 +2,7 @@
 
 require_once "database/MySqlConnection.php";
 
-class Donante extends MySqlConnection{
+class Paciente extends MySqlConnection{
 
     const TABLE_NAME = 'tbl_pacientes';
 
@@ -27,7 +27,7 @@ class Donante extends MySqlConnection{
     }
 
     public function setContraseñaPaciente($contraseña_paciente){
-        $this->contraseña_paciente = $contraseña_paciente;
+        $this->contraseña_paciente = password_hash($contraseña_paciente, PASSWORD_DEFAULT);        
     }
     
     public function getContraseñaPaciente(){
