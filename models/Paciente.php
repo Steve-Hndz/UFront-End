@@ -9,7 +9,7 @@ class Donante extends MySqlConnection{
     private $id_paciente;
     private $nombre_paciente;
     private $apellido_paciente;
-    private $contraseña;
+    private $contraseña_paciente;
     private $telefono_paciente;
     private $correo_paciente;
     private $id_sangre;
@@ -26,12 +26,12 @@ class Donante extends MySqlConnection{
         return $this->id_paciente;
     }
 
-    public function setContraseña($contraseña){
-        $this->contraseña = $contraseña;
+    public function setContraseñaPaciente($contraseña_paciente){
+        $this->contraseña_paciente = $contraseña_paciente;
     }
     
-    public function getIdContraseña(){
-        return $this->contraseña;
+    public function getContraseñaPaciente(){
+        return $this->contraseña_paciente;
     }
 
     public function setNombre_paciente($nombre_paciente){
