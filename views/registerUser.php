@@ -12,4 +12,4 @@
         <input type="password" name="contrasenia" required>
         <input type="submit" value="Registrar">
     </form>
-</main>
+</main

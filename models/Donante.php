@@ -10,6 +10,7 @@ class Donante extends MySqlConnection{
   private $nombre_donante;
   private $apellido_donante;
   private $telefono_donante;
+  private $contraseña_donante;
   private $id_sangre;
   private $id_departamento;
   private $id_municipio;
@@ -24,6 +25,14 @@ class Donante extends MySqlConnection{
 
   public function getId_donante(){
     return $this->id_donante;
+  }
+
+  public function setContraseñaDonante($contraseña_donante){
+    $this->contraseña_donante = password_hash($contraseña_donante, PASSWORD_DEFAULT);  
+  }
+
+  public function getContraseñaDonante(){
+    return $this->contraseña_donante;
   }
 
   public function setCarnet($carnet){

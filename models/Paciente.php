@@ -2,13 +2,14 @@
 
 require_once "database/MySqlConnection.php";
 
-class Donante extends MySqlConnection{
+class Paciente extends MySqlConnection{
 
     const TABLE_NAME = 'tbl_pacientes';
 
     private $id_paciente;
     private $nombre_paciente;
     private $apellido_paciente;
+    private $contraseña_paciente;
     private $telefono_paciente;
     private $correo_paciente;
     private $id_sangre;
@@ -23,6 +24,14 @@ class Donante extends MySqlConnection{
 
     public function getId_paciente(){
         return $this->id_paciente;
+    }
+
+    public function setContraseñaPaciente($contraseña_paciente){
+        $this->contraseña_paciente = password_hash($contraseña_paciente, PASSWORD_DEFAULT);        
+    }
+    
+    public function getContraseñaPaciente(){
+        return $this->contraseña_paciente;
     }
 
     public function setNombre_paciente($nombre_paciente){
