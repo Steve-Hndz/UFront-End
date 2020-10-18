@@ -7,8 +7,8 @@
   margin-top: 15px;
   padding: 5%;
   padding-top: 1%;
-  -webkit-box-shadow: 0 2px 9px 0 #000000;
-  box-shadow: 0 2px 9px 0 #000000;
+  -webkit-box-shadow: 0 0 55px 0 var(--color-light);
+  box-shadow: 0 0 55px 0 var(--color-light);;
   -webkit-border-radius: 11px 11px 11px 11px;
   border-radius: 11px 11px 11px 11px;
 }
@@ -19,7 +19,9 @@
 }
 
 .donantes__img {
-  width: 60%;
+  /* width: 60%; */
+  margin-top: -100px;
+  margin-bottom: -100px;
   height: auto;
   align-content: center;
 }
@@ -43,6 +45,7 @@
   font-size: var(--font-size-medium);
   vertical-align: text-bottom;
   margin-top: 13px;
+  margin-bottom: 13px;
 }
 
 .donantes__txtregistrar p span {
@@ -52,7 +55,8 @@
   margin-right: 15px;
 }
 .donantes__title {
-  font-size: 5vw;
+  margin: 1em 0;
+  font-size: var(--font-size-xbig);
   color: var(--color-black);
 }
 
@@ -171,7 +175,7 @@
 .content_table {
     width: auto;
     padding: 30px;
-    max-height: 500px;
+    /* max-height: 500px; */
     overflow-y: hidden;
     overflow-x: hidden;
     overflow: auto;
@@ -183,7 +187,7 @@
     width: auto;
     border-radius: 10px;
     border-collapse: collapse;
-    border: solid 0.5px #b1b1b1;
+    border: solid 0.5px var(--color-light);
   }
   
   .title_table {
@@ -212,7 +216,7 @@
   }
   
   tr:hover {
-    background-color: #fc836e;
+    background-color: var(--color-light);
   }
 
 @media (max-width: 768px) {
@@ -257,6 +261,16 @@
     width: auto;
     border-collapse: unset;
     border: 0px;
+  }
+
+  .donantes__img{
+    margin-top: -50px;
+    width: 100%;
+  }
+
+  .donantes__container-title{
+    margin: auto;
+    text-align: center;
   }
 
   .table_full tr {

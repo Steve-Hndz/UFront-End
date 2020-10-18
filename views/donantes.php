@@ -3,7 +3,7 @@
         <img src="<?= BASE_DIR; ?>assets/images/donantes.png" alt="imagen alusiva a los donantes" class="donantes__img">
     </div>
     <div class="donantes__txtregistrar">
-        <p>¿Quieres donar? <span>Puedes registrarte como donante Aquí</span></p>
+        <p class="donantes__p">¿Quieres donar? <span>Puedes registrarte como donante Aquí</span></p>
         <button class="button button--outline"> Registrarme como Donante ➤</button>
     </div>
     <div class="donantes__container-title">
@@ -68,9 +68,9 @@
                     <tr class="body_table">
                         <td data-titulo="Nombre: "><strong><?php echo $donante->nombre_donante ?></strong></td>
                         <td data-titulo="Apellido: "><strong><?php echo $donante->apellido_donante ?></strong></td>
-                        <td data-titulo="Departamento: "><strong>---</strong></td>
-                        <td data-titulo="Municipio: "><strong>---</strong></td>
-                        <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong>---</strong></td>
+                        <td data-titulo="Departamento: "><strong> <?php echo $donante->id_departamento ?> </strong></td>
+                        <td data-titulo="Municipio: "><strong><?php echo $donante->id_municipio ?></strong></td>
+                        <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong><?php echo $donante->id_sangre ?></strong></td>
                         <td data-titulo="Telefono: "><strong><?php echo $donante->telefono_donante ?></strong></td>
                         <td data-titulo="Estado: "><strong><?php echo $donante->estado_donante ?></strong></td>
                     </tr>
