@@ -10,6 +10,9 @@ class DonantesController
   public function list()
   {
     require_once "models/Donante.php";
+    require_once "models/Departamento.php";
+    require_once "models/Municipio.php";
+
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
 
@@ -19,9 +22,13 @@ class DonantesController
     // echo $limit . "<br>";
     // $departamentos
     // $municipios
+    $departamentoModel = new Departamento();
+    $municipiosModel = new Municipio();
+    $departamentosList = $departamentoModel->list(1, 14);
+    $municipiosList = $municipiosModel->list(1, 14);
     $donantes = new Donante();
     $list = $donantes->list($page, $limit, $filter, $sort);
-    // var_dump($list);
+    // var_dump($departamentosList);
     
     require_once 'views/donantes.php';
   }

@@ -19,10 +19,9 @@
 
                     <select>
                         <option>--Select--</option>
-                        <option>Hello 1</option>
-                        <option>Hello 2</option>
-                        <option>Hello 3</option>
-                        <option>Hello 4</option>
+                        <?php foreach ($departamentosList as $departamento) { ?>
+                            <option value="<?=$departamento->nombre_departamento?>"><?=$departamento->nombre_departamento?></option>
+                        <?php } ?>
                     </select>
                     <div class="select_arrow">
                     </div>
@@ -68,9 +67,9 @@
                     <tr class="body_table">
                         <td data-titulo="Nombre: "><strong><?php echo $donante->nombre_donante ?></strong></td>
                         <td data-titulo="Apellido: "><strong><?php echo $donante->apellido_donante ?></strong></td>
-                        <td data-titulo="Departamento: "><strong> <?php echo $donante->id_departamento ?> </strong></td>
-                        <td data-titulo="Municipio: "><strong><?php echo $donante->id_municipio ?></strong></td>
-                        <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong><?php echo $donante->id_sangre ?></strong></td>
+                        <td data-titulo="Departamento: "><strong> <?php echo $donante->nombre_departamento ?> </strong></td>
+                        <td data-titulo="Municipio: "><strong><?php echo $donante->nombre_municipio ?></strong></td>
+                        <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong><?php echo $donante->nombre_sangre ?></strong></td>
                         <td data-titulo="Telefono: "><strong><?php echo $donante->telefono_donante ?></strong></td>
                         <td data-titulo="Estado: "><strong><?php echo $donante->estado_donante ?></strong></td>
                     </tr>
