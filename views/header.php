@@ -1,5 +1,4 @@
 <?php
-
     $selected = 'INICIO';
     if (isset($_GET['controller'])) {
         switch ($_GET['controller']) {
@@ -16,7 +15,6 @@
                 break;
         }
     }
-    echo $selected
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,13 +22,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?= BASE_DIR; ?>assets/images/jeringa.svg">
-    <!-- <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/style.css"> -->
+    <link rel="shortcut icon" href="assets/images/jeringa.svg">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/root.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/footer.css">
-
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/register.css">
     <title>Donantes covid-19</title>
 </head>
 
@@ -38,7 +35,7 @@
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <a href="home.php" class="navbar__tittle">
+                <a href="<?=BASE_DIR?>" class="navbar__tittle">
                 <img src="<?=BASE_DIR?>assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
                     <p class="navbar__logo-tittle">U-Safe</p>
                 </a>
@@ -70,5 +67,4 @@
             </ul>
         </nav>
     </header>
-
 <script type="text/javascript" src="<?=BASE_DIR;?>js/main.js"></script>
