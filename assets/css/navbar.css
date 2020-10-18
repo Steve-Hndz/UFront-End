@@ -11,7 +11,7 @@
 }
 
 .navbar:hover{
-    background-color: var(--color-light);
+    background-color: white;
 }
 
 .navbar__logo{
@@ -90,7 +90,7 @@
 @media (max-width: 768px) {
     /* Asignar nueva posicion al navbar */
     .navbar {
-        position: relative;
+        position: fixed;
     }
 
     /* Los links se manejan aqui para mostrarse en la pantalla */

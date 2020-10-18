@@ -1,0 +1,294 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("root.css");
+@import url("button.css");
+
+.donantes__container {
+  margin: 6%;
+  margin-top: 15px;
+  padding: 5%;
+  padding-top: 1%;
+  -webkit-box-shadow: 0 0 55px 0 var(--color-light);
+  box-shadow: 0 0 55px 0 var(--color-light);;
+  -webkit-border-radius: 11px 11px 11px 11px;
+  border-radius: 11px 11px 11px 11px;
+}
+.donantes__container-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.donantes__img {
+  /* width: 60%; */
+  margin-top: -100px;
+  margin-bottom: -100px;
+  height: auto;
+  align-content: center;
+}
+
+.donantes__container-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.donantes__txtregistrar {
+  width: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 5px;
+}
+.donantes__txtregistrar p {
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: var(--font-size-medium);
+  vertical-align: text-bottom;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.donantes__txtregistrar p span {
+  color: var(--color-accent);
+  font-size: var(--font-size-medium);
+  font-weight: normal;
+  margin-right: 15px;
+}
+.donantes__title {
+  margin: 1em 0;
+  font-size: var(--font-size-xbig);
+  color: var(--color-black);
+}
+
+.donantes__form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 10px;
+}
+
+.donantes__select-tittle {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 14px;
+  justify-content: left;
+  left: 0;
+}
+.donantes__select-tittle p {
+  font-size: var(--font-medium);
+  color: var(--color-black);
+  margin-bottom: 13px;
+  font-weight: bold;
+}
+.select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 9px 14px;
+  outline: 0;
+  border: 2px solid #837f7f;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #837f7f;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 14px;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select:hover,
+.select select:focus {
+  color: #000000;
+  background: #f6f6f6;
+}
+.select select:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.select_arrow {
+  position: absolute;
+  top: 9px;
+  right: 7%;
+  width: 14px;
+  height: 14px;
+  border: solid #837f7f;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+  border-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+  border-top-color: #cccccc;
+}
+
+.donantes__input {
+  display: flex;
+  max-width: 370px;
+  margin: 15px;
+  margin-left: 12%;
+  width: 100%;
+  margin-top: 45.6px;
+}
+.donantes__input input {
+  width: 100%;
+  max-height: 38px;
+  padding: 9px 14px;
+  font-size: 14px;
+  border-width: 2px;
+  border-color: #837f7f;
+  background-color: #ffffff;
+  color: #000000;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+.donantes__input input:focus {
+  outline: none;
+}
+
+.donantes__input button {
+  margin-left: 10px;
+  font-size: 35px;
+  border-width: 0;
+  border-color: #ffffff;
+  background-color: #ffffff;
+  color: #837f7f;
+  border-style: none;
+}
+
+/*---- Diseños para tablas ----- */
+
+.content_table {
+    width: auto;
+    padding: 30px;
+    /* max-height: 500px; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow: auto;
+  
+  }
+  
+  .table_full {
+    margin: auto;
+    width: auto;
+    border-radius: 10px;
+    border-collapse: collapse;
+    border: solid 0.5px var(--color-light);
+  }
+  
+  .title_table {
+    border-bottom: solid 3px #a1a1a1a2;
+  }
+  
+  .title_table td {
+    color: rgb(24, 24, 24);
+    background: white;
+    text-align: left;
+    width: 180px;
+    padding: 20px;
+  }
+  
+  .body_table td {
+    text-align: left;
+    padding: 13px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #bbbbbb69;
+  }
+  
+  .tipe_blood {
+    color: #e7042a;
+  }
+  
+  tr:hover {
+    background-color: var(--color-light);
+  }
+
+@media (max-width: 768px) {
+  .donantes__form {
+    display: inline-block;
+    width: 100%;
+    margin: 10px;
+    margin-left: -10px;
+    padding: 20px;
+  }
+
+  .donantes__input {
+    max-width: 100%;
+    margin: 13px;
+    margin-top: 20px;
+  }
+
+  .donantes__select-tittle {
+    max-width: 100%;
+  }
+  .donantes__txtregistrar {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .content_table{
+    width: 100%;
+    margin: 10px;
+    margin-left: -10px;
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .content_table {
+    padding: 0px;
+  }
+
+  .table_full {
+    width: auto;
+    border-collapse: unset;
+    border: 0px;
+  }
+
+  .donantes__img{
+    margin-top: -50px;
+    width: 100%;
+  }
+
+  .donantes__container-title{
+    margin: auto;
+    text-align: center;
+  }
+
+  .table_full tr {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-bottom: 15px;
+    border: solid 0.5px #b1b1b1;
+    background: var(--color-light);
+    border-radius: 15px;
+  }
+
+  .table_full thead {
+    display: none;
+  }
+
+  .table_full td[data-titulo]::before {
+    content: attr(data-titulo);
+  }
+}
+
