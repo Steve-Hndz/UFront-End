@@ -17,7 +17,7 @@ class Donante extends MySqlConnection{
     private $estado_paciente;
     private $id_hospital;
 
-    public function setId_paciente(){
+    public function setId_paciente( $id_paciente){
         $this->id_paciente = $id_paciente;
     }
 
@@ -25,7 +25,7 @@ class Donante extends MySqlConnection{
         return $this->id_paciente;
     }
 
-    public function setNombre_paciente(){
+    public function setNombre_paciente($nombre_paciente){
         $this->nombre_paciente = $nombre_paciente;
     }
 
@@ -33,7 +33,7 @@ class Donante extends MySqlConnection{
         return $this->nombre_paciente;
     }
 
-    public function setApellido_paciente(){
+    public function setApellido_paciente($apellido_paciente){
         $this->apellido_paciente = $apellido_paciente;
     }
 
@@ -41,7 +41,7 @@ class Donante extends MySqlConnection{
         return $this->apellido_paciente;
     }
 
-    public function setTelefono_paciente(){
+    public function setTelefono_paciente($telefono_paciente){
         $this->telefono_paciente = $telefono_paciente;
     }
 
@@ -49,7 +49,7 @@ class Donante extends MySqlConnection{
         return $this->telefono_paciente;
     }
 
-    public function setCorreo_paciente(){
+    public function setCorreo_paciente($correo_paciente){
         $this->correo_paciente = $correo_paciente;
     }
 
@@ -57,7 +57,7 @@ class Donante extends MySqlConnection{
         return $this->correo_paciente;
     }
 
-    public function setId_sangre(){
+    public function setId_sangre($id_sangre){
         $this->id_sangre = $id_sangre;
     }
 
@@ -65,7 +65,7 @@ class Donante extends MySqlConnection{
         return $this->id_sangre;
     }
 
-    public function setId_departamento(){
+    public function setId_departamento($id_departamento){
         $this->id_departamento = $id_departamento;
     }
 
@@ -73,7 +73,7 @@ class Donante extends MySqlConnection{
         return $this->id_departamento;
     }
 
-    public function setId_municipio(){
+    public function setId_municipio($id_municipio){
         $this->id_municipio = $id_municipio;
     }
 
@@ -81,7 +81,7 @@ class Donante extends MySqlConnection{
         return $this->id_municipio;
     }
 
-    public function setEstado_paciente(){
+    public function setEstado_paciente($estado_paciente){
         $this->estado_paciente = $estado_paciente;
     }
 
@@ -89,7 +89,7 @@ class Donante extends MySqlConnection{
         return $this->estado_paciente;
     }
 
-    public function setId_hospital(){
+    public function setId_hospital($id_hospital){
         $this->id_hospital = $id_hospital;
     }
 
@@ -99,6 +99,6 @@ class Donante extends MySqlConnection{
 
     public function __construct()
     {
-    parent::__construct();
+        parent::__construct();
     }
 }

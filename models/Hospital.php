@@ -15,7 +15,7 @@ class Hospital extends MySqlConnection{
     private $correoEncargado_hospital;
     private $correoContacto_hospital;
 
-    public function setId_hospital(){
+    public function setId_hospital($id_hospital){
         $this->id_hospital = $id_hospital;
     }
 
@@ -23,7 +23,7 @@ class Hospital extends MySqlConnection{
         return $this->id_hospital;
     }
 
-    public function setNombre_hospital(){
+    public function setNombre_hospital($nombre_hospital){
         $this->nombre_hospital = $nombre_hospital;
     }
 
@@ -31,7 +31,7 @@ class Hospital extends MySqlConnection{
         return $this->nombre_hospital;
     }
 
-    public function setTelefono_hospital(){
+    public function setTelefono_hospital($telefono_hospital){
         $this->telefono_hospital = $telefono_hospital;
     }
 
@@ -39,7 +39,7 @@ class Hospital extends MySqlConnection{
         return $this->telefono_hospital;
     }
 
-    public function setDireccion_hospital(){
+    public function setDireccion_hospital($direccion_hospital){
         $this->direccion_hospital = $direccion_hospital;
     }
 
@@ -47,7 +47,7 @@ class Hospital extends MySqlConnection{
         return $this->direccion_hospital;
     }
 
-    public function setEncargado_hospital(){
+    public function setEncargado_hospital($encargado_hospital){
         $this->encargado_hospital = $encargado_hospital;
     }
 
@@ -55,7 +55,7 @@ class Hospital extends MySqlConnection{
         return $this->encargado_hospital;
     }
 
-    public function setTelefonoEncargado_hospital(){
+    public function setTelefonoEncargado_hospital($telefonoEncargado_hospital){
         $this->telefonoEncargado_hospital = $telefonoEncargado_hospital;
     }
 
@@ -63,7 +63,7 @@ class Hospital extends MySqlConnection{
         return $this->telefonoEncargado_hospital;
     }
 
-    public function setCorreoEncargado_hospital(){
+    public function setCorreoEncargado_hospital($correoEncargado_hospital){
         $this->correoEncargado_hospital = $correoEncargado_hospital;
     }
 
@@ -71,7 +71,7 @@ class Hospital extends MySqlConnection{
         return $this->correoEncargado_hospital;
     }
 
-    public function setCorreoContacto_hospital(){
+    public function setCorreoContacto_hospital($correoContacto_hospital){
         $this->correoContacto_hospital = $correoContacto_hospital;
     }
 
@@ -81,6 +81,6 @@ class Hospital extends MySqlConnection{
     
     public function __construct()
     {
-    parent::__construct();
+        parent::__construct();
     }
 }
