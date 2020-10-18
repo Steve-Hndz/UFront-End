@@ -3,7 +3,7 @@ require_once "config/db.php";
 require_once "database/Connection.php";
 class MySqlConnection extends Connection
 {
-  protected $db;
+  public $db;
 
   public function __construct()
   {
@@ -17,8 +17,6 @@ class MySqlConnection extends Connection
 
     if ($this->db->connect_errno) {
       echo "Fallo al conectar a MySQL: " . $this->connection->connect_error;
-    } else {
-      // echo "database connected";
     }
   }
 

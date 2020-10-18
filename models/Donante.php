@@ -15,12 +15,30 @@ class Donante extends MySqlConnection{
   private $id_municipio;
   private $estado_donante;
   private $prueba_donante;
+  private $carnet;
+  private $historial;
 
   public function setId_donante($id_donante){
     $this->id_donante = $id_donante;
   }
 
   public function getId_donante(){
+    return $this->id_donante;
+  }
+
+  public function setCarnet($carnet){
+    $this->carnet = $carnet;
+  }
+
+  public function getCarnet(){
+    return $this->carnet;
+  }
+
+  public function setHistorial($historial){
+    $this->historial = $historial;
+  }
+
+  public function getHistorial(){
     return $this->id_donante;
   }
 
@@ -97,7 +115,9 @@ class Donante extends MySqlConnection{
   {
     
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT * FROM " . self::TABLE_NAME ;
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " d";
+    $sql .= " INNER JOIN tbl_municipio m on m.id_municipio = d.id_municipio ";
+    $sql .= " INNER JOIN tbl_departamento dp ON dp.id_departamento = d.id_departamento";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->crateSqlSort($sort);
     $sql .= " limit " . $limit . " offset " . $offset;
@@ -115,7 +135,7 @@ class Donante extends MySqlConnection{
 
   private function createSqlFilter($filter) {
     $sql = "";
-    $filters = ['name']; // set available filters here
+    $filters = ['name', 'departamento', 'municipio']; // set available filters here
     if (count($filter)) {
       $i = 0;
       foreach ($filter as $key => $value) {
@@ -126,7 +146,13 @@ class Donante extends MySqlConnection{
           $sql .= ($i == 0 ) ? " WHERE " : " AND ";
           switch ($key) {
             case 'name':
-              $sql .= "nombre_donante LIKE '%" . $value ."%'"; 
+              $sql .= "d.nombre_donante LIKE '%" . $value ."%'"; 
+              break;
+            case 'municipio':
+              $sql .= "m.id_municipio = " . $value ." "; 
+              break;
+            case 'departamento':
+              $sql .= "dp.id_departamento = " . $value ." "; 
               break;
             
             default:
@@ -142,7 +168,7 @@ class Donante extends MySqlConnection{
 
   private function crateSqlSort($rules) {
     $sql = "";
-    $fields = ['id']; // set available filters here
+    $fields = ['id', 'municipio', 'departamento']; // set available filters here
     if (count($rules)) {
       $i = 0;
       foreach ($rules as $key => $value) {
@@ -154,7 +180,13 @@ class Donante extends MySqlConnection{
           if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";
           switch ($key) {
             case 'id':
-              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " id_donante " . $value ." "; 
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_donante " . $value ." "; 
+              break;
+            case 'municipio':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_municipio " . $value ." "; 
+              break;
+            case 'departamento':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_departamento " . $value ." "; 
               break;
             
             default:
@@ -167,11 +199,12 @@ class Donante extends MySqlConnection{
     }
     return $sql;
   }
-  public function get($id)
+
+  public function get()
   {
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_departamento = " . $id;
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_donante = " . $this->id_donante;
     // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
-    
+    echo $sql . "<br>";
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
       $data = array();
       while ($obj = $result->fetch_object()) {
@@ -180,20 +213,36 @@ class Donante extends MySqlConnection{
       return $data;
     }
   }
-  public function create($data)
+
+  public function create()
   {
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante) VALUES ('" . $data['name'] . "','" . $data['lastName'] . "'," . $data['status'] . "," . $data['department'] . ","  . $data['state'] . "," . $data['blood_id'] . "," . $data['test'] . ",'" . $data['telephone'] . "')";
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante,carnet,historial) VALUES 
+    ('" . $this->getNombre_donante() . "','" . $this->apellido_donante . "','Created'," . $this->id_departamento . ","  . $this->id_municipio . "," . $this->id_sangre . ",'" . $this->prueba_donante . "','" . $this->telefono_donante . "','" . $this->carnet . "','" . $this->historial . "')";
     // $query = $this->db->prepare("INSERT INTO " . self::TABLE_NAME . " ""
-    echo $sql . "<br>";
+    // echo $sql . "<br>";
     if (!$result = $this->db->query($sql)) {
       return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
     }
     return $result;
   }
+
   public function update()
   {
+    $sql = "UPDATE " . self::TABLE_NAME . " SET estado_donante = '" . $this->estado_donante . "' WHERE id_donante = " . $this->id_donante;
+    echo $sql . "<br>";
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la actualizacion del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
   }
+
   public function delete()
   {
+    $sql = "DELETE FROM " . self::TABLE_NAME . " where id_donante = " . $this->id_donante;
+    echo $sql . "<br>";
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
   }
 }

@@ -9,7 +9,7 @@ class Sangre extends MySqlConnection{
     private $id_sangre;
     private $nombre_sangre;
 
-    public function setId_sangre(){
+    public function setId_sangre($id_sangre){
         $this->id_sangre = $id_sangre;
     }
 
@@ -17,7 +17,7 @@ class Sangre extends MySqlConnection{
         return $this->id_sangre;
     }
 
-    public function setNombre_sangre(){
+    public function setNombre_sangre($nombre_sangre){
         $this->nombre_sangre = $nombre_sangre;
     }
 
@@ -27,6 +27,6 @@ class Sangre extends MySqlConnection{
     
     public function __construct()
     {
-    parent::__construct();
+        parent::__construct();
     }
 }

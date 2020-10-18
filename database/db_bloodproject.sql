@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2020 a las 17:56:19
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.2.32
+-- Tiempo de generación: 18-10-2020 a las 05:49:21
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_bloodproject`
 --
-CREATE DATABASE IF NOT EXISTS `db_bloodproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `db_bloodproject`;
 
 DELIMITER $$
 --
@@ -204,7 +202,8 @@ INSERT INTO `tbl_departamento` (`id_departamento`, `nombre_departamento`) VALUES
 (11, 'La Paz'),
 (12, 'Sonsonate'),
 (13, 'Ahuachapán'),
-(14, 'Cuscatlán');
+(14, 'Cuscatlán'),
+(15, 'test');
 
 -- --------------------------------------------------------
 
@@ -219,17 +218,21 @@ CREATE TABLE `tbl_donantes` (
   `telefono_donante` text COLLATE utf8_spanish_ci NOT NULL,
   `id_departamento` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `prueba_donante` tinyint(1) NOT NULL,
-  `estado_donante` tinyint(1) NOT NULL,
-  `id_sangre` int(11) NOT NULL
+  `prueba_donante` enum('Yes','No') COLLATE utf8_spanish_ci NOT NULL,
+  `estado_donante` enum('Active','Inactive','') COLLATE utf8_spanish_ci NOT NULL,
+  `id_sangre` int(11) NOT NULL,
+  `carnet` enum('Yes','No') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'No',
+  `historial` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `contrasenia` longtext COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_donantes`
 --
 
-INSERT INTO `tbl_donantes` (`id_donante`, `nombre_donante`, `apellido_donante`, `telefono_donante`, `id_departamento`, `id_municipio`, `prueba_donante`, `estado_donante`, `id_sangre`) VALUES
-(1, 'Oscar', 'Palacios', '7588-9633', 1, 2, 1, 0, 1);
+INSERT INTO `tbl_donantes` (`id_donante`, `nombre_donante`, `apellido_donante`, `telefono_donante`, `id_departamento`, `id_municipio`, `prueba_donante`, `estado_donante`, `id_sangre`, `carnet`, `historial`, `contrasenia`) VALUES
+(1, 'Oscar', 'Palacios', '7588-9633', 1, 2, 'Yes', '', 1, 'No', NULL, ''),
+(4, 'Erick Josue', 'Saravia', '71021375', 1, 1, 'Yes', '', 1, 'No', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -245,15 +248,17 @@ CREATE TABLE `tbl_hospitales` (
   `encargado_hospital` text COLLATE utf8_spanish_ci NOT NULL,
   `telefonoEncargado_hospital` text COLLATE utf8_spanish_ci NOT NULL,
   `correoEncargado_hospital` text COLLATE utf8_spanish_ci NOT NULL,
-  `correoContacto_hospital` text COLLATE utf8_spanish_ci NOT NULL
+  `correoContacto_hospital` text COLLATE utf8_spanish_ci NOT NULL,
+  `id_departamento` int(11) NOT NULL,
+  `id_municipio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_hospitales`
 --
 
-INSERT INTO `tbl_hospitales` (`id_hospital`, `nombre_hospital`, `telefono_hospital`, `direccion_hospital`, `encargado_hospital`, `telefonoEncargado_hospital`, `correoEncargado_hospital`, `correoContacto_hospital`) VALUES
-(1, 'Bloom', '7459-9631', 'San Salvador, Av. Los Almendros, local 254', 'Nelson Zepeda', '7412-8520', 'zepetadr@gmail.com', 'bloomsv@salud.gob.sv');
+INSERT INTO `tbl_hospitales` (`id_hospital`, `nombre_hospital`, `telefono_hospital`, `direccion_hospital`, `encargado_hospital`, `telefonoEncargado_hospital`, `correoEncargado_hospital`, `correoContacto_hospital`, `id_departamento`, `id_municipio`) VALUES
+(1, 'Bloom', '7459-9631', 'San Salvador, Av. Los Almendros, local 254', 'Nelson Zepeda', '7412-8520', 'zepetadr@gmail.com', 'bloomsv@salud.gob.sv', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -291,15 +296,16 @@ CREATE TABLE `tbl_pacientes` (
   `id_departamento` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `estado_paciente` tinyint(1) NOT NULL,
-  `id_hospital` int(11) NOT NULL
+  `id_hospital` int(11) NOT NULL,
+  `contrasenia` longtext COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_pacientes`
 --
 
-INSERT INTO `tbl_pacientes` (`id_paciente`, `nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`) VALUES
-(2, 'Luis', 'Chavez', '7485-9632', 'luisv@gmail.com', 1, 1, 2, 1, 1);
+INSERT INTO `tbl_pacientes` (`id_paciente`, `nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`, `contrasenia`) VALUES
+(2, 'Luis', 'Chavez', '7485-9632', 'luisv@gmail.com', 1, 1, 2, 1, 1, '');
 
 -- --------------------------------------------------------
 
@@ -430,13 +436,13 @@ ALTER TABLE `tbl_sangre`
 -- AUTO_INCREMENT de la tabla `tbl_departamento`
 --
 ALTER TABLE `tbl_departamento`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_donantes`
 --
 ALTER TABLE `tbl_donantes`
-  MODIFY `id_donante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_donante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_hospitales`
