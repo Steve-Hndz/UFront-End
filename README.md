@@ -53,20 +53,20 @@ Los campos deben existir en la base de datos
 - También se debe dejar un apartado en donde se muestren los hospitales en donde se puede ir a hacer una donación de plasma, los datos que se mostrarían son: nombre del hospital y la dirección, el horario de atención
 
 # Datos a solicitar.
-   Donantes:
-- Nombre y Apellidos
-- Numero de Telefono
-- Departamento y municipio
-- Correo electrónico
-- Tipo de Sangre
-- Historial del donante (en qué lugar estuvo en recuperación, si tuvo sospechas de la enfermedad pero no se ha confirmado)
-- Si cuenta con examen de anticuerpos que verifique que contrajo la enfermedad
-- Si posee carnet de COVID-19
-- Información Adicional (si tiene la disponibilidad de viajar, etc.)
+- Donantes:
+   - Nombre y Apellidos
+   - Numero de Telefono
+   - Departamento y municipio
+   - Correo electrónico
+   - Tipo de Sangre
+   - Historial del donante (en qué lugar estuvo en recuperación, si tuvo sospechas de la enfermedad pero no se ha confirmado)
+   - Si cuenta con examen de anticuerpos que verifique que contrajo la enfermedad
+   - Si posee carnet de COVID-19
+   - Información Adicional (si tiene la disponibilidad de viajar, etc.)
 
-  Pacientes:
-- Nombre y Apellidos
-- Numero de telefono
-- Hospital en que se encuentra (siempre especificando departamento y municipio)
-- Tipo de Sangre
-- Descripción del estado del paciente (si necesita con urgencia, detalles de cómo llegar a él, etc)
+- Pacientes:
+   - Nombre y Apellidos
+   - Numero de telefono
+   - Hospital en que se encuentra (siempre especificando departamento y municipio)
+   - Tipo de Sangre
+   - Descripción del estado del paciente (si necesita con urgencia, detalles de cómo llegar a él, etc)
