@@ -1,4 +1,5 @@
 <main>
+<<<<<<< HEAD
 <div class="plant">
       <img src="<?=BASE_DIR?>assets/images/clip-doctor-and-patient.png" alt="doctor y paciente">
     </div>

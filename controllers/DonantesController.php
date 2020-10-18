@@ -15,8 +15,10 @@ class DonantesController
 
     $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
     $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
-    
+
     // echo $limit . "<br>";
+    // $departamentos
+    // $municipios
     $donantes = new Donante();
     $list = $donantes->list($page, $limit, $filter, $sort);
     // var_dump($list);
@@ -26,6 +28,17 @@ class DonantesController
 
   public function showList(){
     require_once 'views/donantes.php';
+  }
+
+  public function get() {
+    require_once "models/Donante.php";
+    $_POST['id_donante'] = "1";
+    if (isset($_POST['id_donante'])) {
+      $donante = new Donante();
+      $donante->setId_donante($_POST['id_donante']);
+      $createResult = $donante->get();
+      var_dump($createResult); // delete these line
+    }
   }
 
   public function create()
@@ -40,6 +53,8 @@ class DonantesController
       $_POST['id_departamento'] = "1";
       $_POST['id_municipio'] = "1";
       $_POST['prueba_donante'] = "Yes";
+      $_POST['carnet'] = "No";
+      $_POST['historial'] = "";
     /* Dejar de borrar */
     if (isset($_POST['nombre_donante']) && isset($_POST['apellido_donante']) && isset($_POST['telefono_donante']) && 
     isset($_POST['id_sangre']) && isset($_POST['id_departamento']) && isset($_POST['id_municipio']) && isset($_POST['prueba_donante'])) { // remove !
@@ -53,6 +68,43 @@ class DonantesController
       $donante->setPrueba_donante($_POST['prueba_donante']);
       
       $createResult = $donante->create();
+      var_dump($createResult); // delete these line
+      // add here a view
+    }
+  }
+
+  public function update()
+  {
+    require_once "models/Donante.php";
+
+    /* Borrar este bloque es solo para testing */
+      $_POST['id_donante'] = "1";
+      $_POST['estado_donante'] = "Approved";
+    /* Dejar de borrar */
+    if (isset($_POST['id_donante']) && isset($_POST['estado_donante'])) { // remove!
+      $donante = new Donante();
+      $donante->setId_donante($_POST['id_donante']);
+      $donante->setEstado_donante($_POST['estado_donante']);
+      
+      $createResult = $donante->update();
+      var_dump($createResult); // delete these line
+      // add here a view
+    }
+  }
+
+  public function delete()
+  {
+    require_once "models/Donante.php";
+
+    /* Borrar este bloque es solo para testing */
+      $_POST['id_donante'] = "3";
+    /* Dejar de borrar */
+    if (isset($_POST['id_donante'])) { // remove!
+      $donante = new Donante();
+      $donante->setId_donante($_POST['id_donante']);
+      
+      
+      $createResult = $donante->delete();
       var_dump($createResult); // delete these line
       // add here a view
     }

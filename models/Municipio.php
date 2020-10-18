@@ -9,7 +9,7 @@ class Municipio extends MySqlConnection
   private $nombre_municipio;
   private $id_departamento;
 
-  public function setId_municipio(){
+  public function setId_municipio($id_municipio){
     $this->id_municipio = $id_municipio;
   }
 
@@ -17,7 +17,7 @@ class Municipio extends MySqlConnection
       return $this->id_municipio;
   }
 
-  public function setnombre_municipio(){
+  public function setnombre_municipio($nombre_municipio){
     $this->nombre_municipio = $nombre_municipio;
   }
 
@@ -25,7 +25,7 @@ class Municipio extends MySqlConnection
     return $this->nombre_municipio;
   }
 
-  public function setId_departamento(){
+  public function setId_departamento($id_departamento){
     $this->id_departamento = $id_departamento;
   }
 
