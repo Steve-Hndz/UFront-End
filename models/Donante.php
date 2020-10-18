@@ -126,31 +126,31 @@ class Donante extends MySqlConnection{
     $offset = ($page - 1) * $limit;
     $sql = "SELECT * FROM " . self::TABLE_NAME . " d";
     $sql .= " INNER JOIN tbl_municipio m on m.id_municipio = d.id_municipio ";
-    $sql .= " INNER JOIN tbl_departamento dp ON dp.id_departamento = d.id_departamento";
+    $sql .= " INNER JOIN tbl_departamento dp ON dp.id_departamento = d.id_departamento ";
+    $sql .= " INNER JOIN tbl_sangre s ON s.id_sangre = d.id_sangre ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->crateSqlSort($sort);
     $sql .= " limit " . $limit . " offset " . $offset;
-    echo $sql . "<br>";
-    // $query = $this->db->prepare("SELECT * FROM " . self::TABLE_NAME . " offset " . $offset . " limit " . $limit); --- PREPARED
+    // echo "<p></p>" . $sql . "<br>";
     
+    $data = array();
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
-      $data = array();
+      
       while ($obj = $result->fetch_object()) {
         array_push($data, $obj);
       }
-      return $data;
     }
+    return $data;
   }
 
   private function createSqlFilter($filter) {
     $sql = "";
-    $filters = ['name', 'departamento', 'municipio']; // set available filters here
+    $filters = ['name', 'departamento', 'municipio', 'sangre']; // set available filters here
     if (count($filter)) {
       $i = 0;
       foreach ($filter as $key => $value) {
         $searchInFilters = array_search($key, $filters);
         if ($searchInFilters === false) $searchInFilters = -1;
-        echo "<br>";
         if ($searchInFilters >= 0  ) {
           $sql .= ($i == 0 ) ? " WHERE " : " AND ";
           switch ($key) {
@@ -158,10 +158,13 @@ class Donante extends MySqlConnection{
               $sql .= "d.nombre_donante LIKE '%" . $value ."%'"; 
               break;
             case 'municipio':
-              $sql .= "m.id_municipio = " . $value ." "; 
+              $sql .= "m.nombre_municipio = " . $value ." "; 
               break;
             case 'departamento':
-              $sql .= "dp.id_departamento = " . $value ." "; 
+              $sql .= "dp.nombre_departamento = " . $value ." "; 
+              break;
+            case 'sangre':
+              $sql .= "s.id_sangre = " . $value ." "; 
               break;
             
             default:
