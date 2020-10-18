@@ -1,0 +1,129 @@
+@import url('root.css');
+
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: auto;
+   
+}
+
+.plant{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    min-height: 80vh;
+    height: auto;
+    
+}
+
+.plant img{
+  
+    width: 500px;
+    height:500px;
+
+}
+
+.form-holder {
+    box-shadow: 0 8px 16px 3px #594F4F;
+    background: #fff5ea;
+    width: 450px;
+    max-width: 90%;
+    padding: 35px 0px;
+    border-radius: 10px;
+}
+.logo{
+    display: block;
+    width: 100px;
+    margin: 0px auto;
+    border-radius: 20px;
+    background: #222;
+    padding: 10px;
+}
+.form-holder h2{
+    color: #222;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Kanit', sans-serif;
+}
+.form .form-group{
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    position: relative;
+}
+.form-group input{
+    width: 100%;
+    padding: 10px;
+    background: #D5D4D4;
+    border: none;
+    outline: none;
+    color: rgb(32, 32, 32);
+    font-size: 15px;
+    border-bottom: 2px solid #777;
+    border-radius: 80px;
+    padding-left: 40px;
+}
+.form-group img{
+    width: 26px;
+    position: absolute;
+    left: 15px;
+    top: 13px;
+}
+
+.form-group button{
+    width: 80%;
+    margin-left:40px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 80px;
+    font-weight: bold;
+    background: #ec0101;
+    cursor: pointer;
+}
+.form-group input:focus{
+    background: #333;
+    border-color: #0088FF;
+    color: #fff5ea;
+}
+.form-group button:hover{
+    background: #0088FF;
+    color: ghostwhite;
+}
+
+.form-group a{
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+}
+.form-group a:hover{
+    color: #555;
+}
+.form-group .right-link{
+    float: right;
+}
+
+.form-group select{
+    width: 100%;
+    padding: 10px;
+    background: #D5D4D4;
+    border: none;
+    outline: none;
+    color: rgb(32, 32, 32);
+    font-size: 15px;
+    border-bottom: 2px solid #777;
+    border-radius: 80px;
+    padding-left: 40px;
+}
+.form-group select option{
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: #333;
+}
