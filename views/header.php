@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/footer.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/register.css">
-	<link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/donantes.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/donantes.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/about.css">
     <title>Donantes covid-19</title>
 </head>
 
