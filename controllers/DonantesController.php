@@ -1,6 +1,7 @@
 <?php
+require_once 'models/ITask.php';
 
-class DonantesController
+class DonantesController implements ITask
 {
   public function __construct()
   {

@@ -2,7 +2,7 @@
 
 require_once "database/MySqlConnection.php";
 
-class Paciente extends MySqlConnection{
+class Paciente extends MySqlConnection implements ITask{
 
     const TABLE_NAME = 'tbl_pacientes';
 
