@@ -39,7 +39,7 @@
             <div class="navbar__logo">
                 <a href="<?=BASE_DIR?>" class="navbar__tittle">
                 <img src="<?=BASE_DIR?>assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
-                    <p class="navbar__logo-tittle">U-Safe</p>
+                    <p class="navbar__logo-tittle">ADS</p>
                 </a>
 
                 <div class="navbar__h1">
