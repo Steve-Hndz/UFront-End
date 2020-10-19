@@ -260,8 +260,8 @@ class Donante extends MySqlConnection{
 
     public function verifyPassword ($password) {
         $isValidPassword = false;
-        if ($password == $this->getContraseñaDonante()){
-            $isValidPassword=true;
+        if (password_verify($password, $this->getContraseñaDonante())) {
+            $isValidPassword = true;
         }
         return $isValidPassword;
     }
