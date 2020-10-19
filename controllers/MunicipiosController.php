@@ -12,9 +12,13 @@ class MunicipiosController
     require_once "models/Municipio.php";
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
-    //echo $limit . "<br>";
+    
+    $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
+    $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
+
     $municipio = new Municipio();
-    $list = $municipio->list($page, $limit);
+    $list = $municipio->list($page, $limit, $filter, $sort);
+
     var_dump($list);
   }
 
