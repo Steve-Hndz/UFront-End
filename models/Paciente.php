@@ -123,4 +123,15 @@ class Paciente extends MySqlConnection{
       return $data;
     }
   }
+
+  public function create()
+  {
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (`nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`, `contrasenia`) VALUES 
+    ('" . $this->getNombre_paciente() . "','" . $this->getApellido_paciente() . "','" .$this->getTelefono_paciente()."','".$this->getCorreo_paciente()."',". $this->.getId_sangre().",". $this->getId_departamento() . ","  . $this->getId_municipio() . "," . $this->getEstado_paciente() . "," . $this->getId_hospital() . ",'" . $this->getContraseñaPaciente. "')";
+
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
+  }
 }
