@@ -2,7 +2,7 @@
 
 require_once "database/MySqlConnection.php";
 
-class Paciente extends MySqlConnection implements ITask{
+class Paciente extends MySqlConnection implements IMysqlActions{
 
     const TABLE_NAME = 'tbl_pacientes';
 
@@ -150,7 +150,7 @@ class Paciente extends MySqlConnection implements ITask{
     $sql = "DELETE FROM " . self::TABLE_NAME . " where id_paciente = " . $this->getId_paciente();
 
     if (!$result = $this->db->query($sql)) {
-      return "Falló la eliminacion del registro:  (" . $this->db->errno . ") " . $this->db->error;
+      return "Falló la eliminacion del registro: (" . $this->db->errno . ") " . $this->db->error;
     }
     return $result;
   }

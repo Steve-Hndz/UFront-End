@@ -1,8 +1,8 @@
 <?php
 
-require_once 'models/ITask.php';
+require_once 'models/IMysqlActions.php';
 
-class PacientesController implements ITask
+class PacientesController implements IMysqlActions
 {
   public function __construct($database)
   {

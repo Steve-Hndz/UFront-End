@@ -2,7 +2,7 @@
 
 require_once "database/MySqlConnection.php";
 
-class Donante extends MySqlConnection implements ITask{
+class Donante extends MySqlConnection implements IMysqlActions{
 
   const TABLE_NAME = 'tbl_donantes';
 

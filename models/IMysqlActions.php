@@ -1,6 +1,6 @@
 <?php
 
-interface ITask {    
+interface IMysqlActions {    
     
     public function get ();
 
