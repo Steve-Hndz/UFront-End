@@ -134,4 +134,32 @@ class Paciente extends MySqlConnection{
     }
     return $result;
   }
+
+  public function update()
+  {
+    $sql = "UPDATE " . self::TABLE_NAME . " SET estado_paciente = " . $this->getEstado_paciente() . " WHERE id_paciente = " . $this->getId_paciente();
+
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la actualizacion del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
+  }
+
+  public function delete()
+  {
+    $sql = "DELETE FROM " . self::TABLE_NAME . " where id_paciente = " . $this->getId_paciente();
+
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la eliminacion del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
+  }
+
+  public function verifyPassword ($password, $hash) {
+    $isValidPassword = false;
+    if (password_verify($password, $hash)) {
+        $isValidPassword = true;
+    }
+    return $isValidPassword;
+}
 }
