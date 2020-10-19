@@ -110,4 +110,56 @@ class Paciente extends MySqlConnection{
     {
         parent::__construct();
     }
+
+    public function get()
+  {
+    $sql = "SELECT p.id_paciente, p.nombre_paciente, p.apellido_paciente,p.telefono_paciente,p.correo_paciente,p.id_sangre, p.id_departamento, p.id_municipio,p.estado_paciente, h.nombre_hospital, p.contrasenia FROM " . self::TABLE_NAME . " p INNER join tbl_hospitales h ON p.id_hospital=h.id_hospital WHERE id_paciente = " . $this->id_paciente;
+    
+    if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
+      $data = array();
+      while ($obj = $result->fetch_object()) {
+        array_push($data, $obj);
+      }
+      return $data;
+    }
+  }
+
+  public function create()
+  {
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (`nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`, `contrasenia`) VALUES 
+    ('" . $this->getNombre_paciente() . "','" . $this->getApellido_paciente() . "','" .$this->getTelefono_paciente()."','".$this->getCorreo_paciente()."',". $this->getId_sangre().",". $this->getId_departamento() . ","  . $this->getId_municipio() . "," . $this->getEstado_paciente() . "," . $this->getId_hospital() . ",'" . $this->getContraseñaPaciente. "')";
+
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
+  }
+
+  public function update()
+  {
+    $sql = "UPDATE " . self::TABLE_NAME . " SET estado_paciente = " . $this->getEstado_paciente() . " WHERE id_paciente = " . $this->getId_paciente();
+
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la actualizacion del registro: (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
+  }
+
+  public function delete()
+  {
+    $sql = "DELETE FROM " . self::TABLE_NAME . " where id_paciente = " . $this->getId_paciente();
+
+    if (!$result = $this->db->query($sql)) {
+      return "Falló la eliminacion del registro:  (" . $this->db->errno . ") " . $this->db->error;
+    }
+    return $result;
+  }
+
+  public function verifyPassword ($password, $hash) {
+    $isValidPassword = false;
+    if (password_verify($password, $hash)) {
+        $isValidPassword = true;
+    }
+    return $isValidPassword;
+}
 }
