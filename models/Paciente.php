@@ -150,7 +150,7 @@ class Paciente extends MySqlConnection{
     $sql = "DELETE FROM " . self::TABLE_NAME . " where id_paciente = " . $this->getId_paciente();
 
     if (!$result = $this->db->query($sql)) {
-      return "Falló la eliminacion del registro: (" . $this->db->errno . ") " . $this->db->error;
+      return "Falló la eliminacion del registro:  (" . $this->db->errno . ") " . $this->db->error;
     }
     return $result;
   }
