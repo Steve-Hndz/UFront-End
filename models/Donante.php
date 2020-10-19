@@ -258,9 +258,9 @@ class Donante extends MySqlConnection{
     return $result;
   }
 
-    public function verifyPassword ($password) {
+    public function verifyPassword ($password, $hash) {
         $isValidPassword = false;
-        if (password_verify($password, $data["contrasenia"])) {
+        if (password_verify($password, $hash)) {
             $isValidPassword = true;
         }
         return $isValidPassword;
