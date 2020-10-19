@@ -110,4 +110,17 @@ class Paciente extends MySqlConnection{
     {
         parent::__construct();
     }
+
+    public function get()
+  {
+    $sql = "SELECT p.id_paciente, p.nombre_paciente, p.apellido_paciente,p.telefono_paciente,p.correo_paciente,p.id_sangre, p.id_departamento, p.id_municipio,p.estado_paciente, h.nombre_hospital, p.contrasenia FROM " . self::TABLE_NAME . " p INNER join tbl_hospitales h ON p.id_hospital=h.id_hospital WHERE id_paciente = " . $this->id_paciente;
+    
+    if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
+      $data = array();
+      while ($obj = $result->fetch_object()) {
+        array_push($data, $obj);
+      }
+      return $data;
+    }
+  }
 }
