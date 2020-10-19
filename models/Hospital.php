@@ -83,4 +83,80 @@ class Hospital extends MySqlConnection{
     {
         parent::__construct();
     }
+
+    public function list($page = 1, $limit = 20, $filter = [], $sort = [])
+  {
+    
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " h"; // la letra h es solo una abreviasion del nombre de la tabla asi como en los demas abreviaciones de tabla
+
+    $sql .= $this->createSqlFilter($filter);
+    $sql .= $this->crateSqlSort($sort);
+    $sql .= " limit " . $limit . " offset " . $offset;
+
+    $data = array();
+    if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
+      while ($obj = $result->fetch_object()) {
+        array_push($data, $obj);
+      }
+    }
+   return $data;
+  }
+
+  private function createSqlFilter($filter) {
+    $sql = "";
+    $filters = ['name']; // set available filters here
+    if (count($filter)) {
+      $i = 0;
+      foreach ($filter as $key => $value) {
+        $searchInFilters = array_search($key, $filters);
+        if ($searchInFilters === false) $searchInFilters = -1;
+
+        if ($searchInFilters >= 0  ) {
+          $sql .= ($i == 0 ) ? " WHERE " : " AND ";
+          switch ($key) {
+            case 'name':
+              $sql .= "h.nombre_hospital LIKE '%" . $value ."%'"; 
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
+
+  private function crateSqlSort($rules) {
+    $sql = "";
+    $fields = ['id', 'name', 'direccion']; // set available filters here
+    if (count($rules)) {
+      $i = 0;
+      foreach ($rules as $key => $value) {
+        $searchInFilters = array_search($key, $fields);
+        if ($searchInFilters === false) $searchInFilters = -1;
+        echo "<br>";
+        if ($searchInFilters >= 0  ) {
+          $value = strtoupper($value);
+          if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";
+          switch ($key) {
+            case 'id':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " h.id_hospital " . $value ." "; 
+              break;
+            case 'name':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " h.nombre_hospital " . $value ." "; 
+              break;
+            case 'direccion':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " h.direccion_hospital " . $value ." "; 
+              break;
+            
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
 }
