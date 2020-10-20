@@ -1,6 +1,7 @@
 <?php
+require_once 'models/IMysqlActions.php';
 
-class DonantesController
+class DonantesController implements IMysqlActions
 {
   public function __construct()
   {

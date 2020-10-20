@@ -7,7 +7,7 @@
   margin-top: 15px;
   padding: 5%;
   padding-top: 1%;
-  -webkit-box-shadow: 0 0 55px 0 var(--color-light);
+  -webkit-box-shadow: 0 0 55px 0 var(--color-primary);
   box-shadow: 0 0 55px 0 var(--color-light);;
   -webkit-border-radius: 11px 11px 11px 11px;
   border-radius: 11px 11px 11px 11px;

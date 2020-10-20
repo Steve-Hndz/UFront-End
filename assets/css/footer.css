@@ -1,9 +1,10 @@
 @import url('root.css');
 
 .footer{
-    padding: 4em;
+    padding: 1em;
     width: 100vw;
     background-color: var(--color-light);
+    text-align: center;
 }
 
 .footer__text{
