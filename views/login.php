@@ -12,7 +12,7 @@
 
         <div class="form__group">
           <h3>Contraseña</h3>
-          <img class="form__group-img" src="<?=BASE_DIR?>assets/images/user.png" alt="" />
+          <img class="form__group-img" src="<?=BASE_DIR?>assets/images/code.png" alt="" />
           <input class="form__group-input" type="password" name="password" placeholder="12345" required/>
         </div>
 
