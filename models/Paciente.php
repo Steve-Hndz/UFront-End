@@ -189,10 +189,10 @@ class Paciente extends MySqlConnection implements IMysqlActions{
               if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_donante " . $value ." "; 
               break;
             case 'municipio':
-              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.nombre_municipio " . $value ." "; 
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " m.nombre_municipio " . $value ." "; 
               break;
             case 'departamento':
-              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.nombre_departamento " . $value ." "; 
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " dp.nombre_departamento " . $value ." "; 
               break;
             default:
               # code...

@@ -58,7 +58,6 @@ class AccountController
         // add here a view
       }
     } else {
-
       require_once "views/registerDonante.php";
     }
   }

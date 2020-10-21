@@ -2,10 +2,14 @@
 
 require_once 'models/IMysqlActions.php';
 
-class PacientesController implements IMysqlActions
+class PacientesController
 {
   public function __construct($database)
   {
+  }
+
+  public function list () {
+
   }
 
   public function get()
