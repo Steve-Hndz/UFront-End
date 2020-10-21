@@ -10,9 +10,9 @@
     <div class="wrapper">
 
       <div class="form__holder">
-        <form action="" class="form">
+        <form action="" class="form" method="POST">
           <div class="form__group">
-            <img class="form__group-img" src="<?=BASE_DIR?>assets/images/user.png"alt="" />
+            <img class="form__group-img" src="<?=BASE_DIR?>assets/images/user.png" alt="" />
             <input class="form__group-input" type="text" name="nombre" placeholder="Nombre" required/>
           </div>
 
