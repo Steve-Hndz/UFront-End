@@ -2,7 +2,7 @@
 
 require_once "database/MySqlConnection.php";
 
-class Paciente extends MySqlConnection{
+class Paciente extends MySqlConnection implements IMysqlActions{
 
     const TABLE_NAME = 'tbl_pacientes';
 
@@ -111,6 +111,100 @@ class Paciente extends MySqlConnection{
         parent::__construct();
     }
 
+    public function list($page = 1, $limit = 20, $filter = [], $sort = [])
+  {
+    
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " p";
+    $sql .= " INNER JOIN tbl_municipio m on m.id_municipio = p.id_municipio ";
+    $sql .= " INNER JOIN tbl_departamento dp ON dp.id_departamento = p.id_departamento ";
+    $sql .= " INNER JOIN tbl_sangre s ON s.id_sangre = p.id_sangre ";
+    $sql .= " INNER JOIN tbl_hospitales h ON h.id_hospital = p.id_hospital ";
+    $sql .= $this->createSqlFilter($filter);
+    $sql .= $this->crateSqlSort($sort);
+    $sql .= " limit " . $limit . " offset " . $offset;
+    // echo "<p></p>" . $sql . "<br>";
+    
+    $data = array();
+    if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
+      
+      while ($obj = $result->fetch_object()) {
+        array_push($data, $obj);
+      }
+    }
+    return $data;
+  }
+
+  private function createSqlFilter($filter) {
+    $sql = "";
+    $filters = ['name', 'departamento', 'municipio', 'sangre','hospital']; // set available filters here
+    if (count($filter)) {
+      $i = 0;
+      foreach ($filter as $key => $value) {
+        $searchInFilters = array_search($key, $filters);
+        if ($searchInFilters === false) $searchInFilters = -1;
+        if ($searchInFilters >= 0  ) {
+          $sql .= ($i == 0 ) ? " WHERE " : " AND ";
+          switch ($key) {
+            case 'name':
+              $sql .= "d.nombre_donante LIKE '%" . $value ."%'"; 
+              break;
+            case 'municipio':
+              $sql .= "m.id_municipio = " . $value ." "; 
+              break;
+            case 'departamento':
+              $sql .= "dp.id_departamento = " . $value ." "; 
+              break;
+            case 'sangre':
+              $sql .= "s.id_sangre = " . $value ." "; 
+              break;
+            case 'hospital':
+                $sql .= "h.id_hospital = " . $value ." "; 
+                break;
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
+
+  private function crateSqlSort($rules) {
+    $sql = "";
+    $fields = ['id', 'municipio', 'departamento']; // set available filters here
+    if (count($rules)) {
+      $i = 0;
+      foreach ($rules as $key => $value) {
+        $searchInFilters = array_search($key, $fields);
+        if ($searchInFilters === false) $searchInFilters = -1;
+        echo "<br>";
+        if ($searchInFilters >= 0  ) {
+          $value = strtoupper($value);
+          if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";
+          switch ($key) {
+            case 'id':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_donante " . $value ." "; 
+              break;
+            case 'municipio':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.nombre_municipio " . $value ." "; 
+              break;
+            case 'departamento':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.nombre_departamento " . $value ." "; 
+              break;
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
+
     public function get()
   {
     $sql = "SELECT p.id_paciente, p.nombre_paciente, p.apellido_paciente,p.telefono_paciente,p.correo_paciente,p.id_sangre, p.id_departamento, p.id_municipio,p.estado_paciente, h.nombre_hospital, p.contrasenia FROM " . self::TABLE_NAME . " p INNER join tbl_hospitales h ON p.id_hospital=h.id_hospital WHERE id_paciente = " . $this->id_paciente;
@@ -150,7 +244,7 @@ class Paciente extends MySqlConnection{
     $sql = "DELETE FROM " . self::TABLE_NAME . " where id_paciente = " . $this->getId_paciente();
 
     if (!$result = $this->db->query($sql)) {
-      return "Falló la eliminacion del registro:  (" . $this->db->errno . ") " . $this->db->error;
+      return "Falló la eliminacion del registro: (" . $this->db->errno . ") " . $this->db->error;
     }
     return $result;
   }
