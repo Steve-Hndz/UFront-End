@@ -25,14 +25,14 @@ class DonantesController implements IMysqlActions
     // echo $limit . "<br>";
     // $departamentos
     // $municipios
-    /* $departamentoModel = new Departamento();
+    $departamentoModel = new Departamento();
     $municipiosModel = new Municipio();
     $departamentosList = $departamentoModel->list(1, 14);
     
-     if (isset($filter['departamento'])) {
+    if (isset($filter['departamento'])) {
       $municipiosFilter = ['departamento' => $filter['departamento']];
       $municipiosList = $municipiosModel->list(1, 10000, $municipiosFilter);
-    } */
+    }
     $donantes = new Donante();
     $list = $donantes->list($page, $limit, $filter, $sort);
     // var_dump($list);
