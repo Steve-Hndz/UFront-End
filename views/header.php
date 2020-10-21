@@ -8,7 +8,7 @@
             case 'Donantes':
                 $selected = 'INFORMACIÓN';
                 break;
-            case 'Usuario':
+            case 'Account':
                 $selected = 'REGISTRO';
                 break;
             default:
@@ -60,10 +60,10 @@
                     <a href="#" class="navbar__a <?=($selected == 'INFORMACIÓN')? 'navbar__a--selected': ''?>">Información</a>
                     <ul class="navbar__link-ul">
                       <li class="navbar__link-ul-li">
-                        <a href="#" class="navbar__link-ul-li-a">Ver Donantes</a>
+                        <a href="<?=BASE_DIR?>Donantes/list" class="navbar__link-ul-li-a">Ver Donantes</a>
                       </li>
                       <li class="navbar__link-ul-li">
-                        <a href="#" class="navbar__link-ul-li-a">Ver Pacientes</a>
+                        <a href="<?=BASE_DIR?>Pacientes/list" class="navbar__link-ul-li-a">Ver Pacientes</a>
                       </li>
                     </ul>
                 </li>
@@ -71,10 +71,10 @@
                     <a href="#" class="navbar__a <?=($selected == 'REGISTRO')? 'navbar__a--selected': ''?>">Registrar</a>
                     <ul class="navbar__link-ul">
                       <li class="navbar__link-ul-li">
-                        <a href="<?=BASE_DIR?>Usuario/registerDonante" class="navbar__link-ul-li-a">Nuevo Donante</a>
+                        <a href="<?=BASE_DIR?>Account/register&type=donante" class="navbar__link-ul-li-a">Nuevo Donante</a>
                       </li>
                       <li class="navbar__link-ul-li">
-                        <a href="<?=BASE_DIR?>Usuario/registerPaciente" class="navbar__link-ul-li-a">Nuevo Paciente</a>
+                        <a href="<?=BASE_DIR?>Account/register&type=paciente" class="navbar__link-ul-li-a">Nuevo Paciente</a>
                       </li>
                     </ul>
                 </li>

@@ -20,7 +20,7 @@
                     <select>
                         <option>--Select--</option>
                         <?php foreach ($departamentosList as $departamento) { ?>
-                            <option value="<?=$departamento->nombre_departamento?>"><?=$departamento->nombre_departamento?></option>
+                            <option value="<?=$departamento->id_departamento?>" <?=((isset($filter['departamento'])) && $filter['departamento'] == $departamento->id_departamento)? "selected":  ""?>><?=$departamento->nombre_departamento?></option>
                         <?php } ?>
                     </select>
                     <div class="select_arrow">
