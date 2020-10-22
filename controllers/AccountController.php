@@ -35,9 +35,12 @@ class AccountController
     $departamentosList = array();
     $departamentoModel = new Departamento();
     $municipiosModel = new Municipio();
-    $departamentosList = $departamentoModel->list(1, 14);
+    $sangreModel = new Sangre();
 
+    $departamentosList = $departamentoModel->list(1, 14);
     $municipiosList = $municipiosModel->list(1, 10000);
+    $sangreList = $sangreModel->list(1, 20);
+
     if (count($_POST) > 0) {
       require_once "models/Donante.php";
       if (
