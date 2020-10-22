@@ -2,7 +2,7 @@
 
 require_once "database/MySqlConnection.php";
 
-class Donante extends MySqlConnection implements IMysqlActions{
+class Donante extends MySqlConnection{
 
   const TABLE_NAME = 'tbl_donantes';
 
@@ -48,7 +48,7 @@ class Donante extends MySqlConnection implements IMysqlActions{
   }
 
   public function getHistorial(){
-    return $this->id_donante;
+    return $this->historial;
   }
 
   public function setNombre_donante($nombre_donante){
@@ -229,7 +229,7 @@ class Donante extends MySqlConnection implements IMysqlActions{
   public function create()
   {
     $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante,carnet,historial) VALUES 
-    ('" . $this->getNombre_donante() . "','" . $this->apellido_donante . "','Created'," . $this->id_departamento . ","  . $this->id_municipio . "," . $this->id_sangre . ",'" . $this->prueba_donante . "','" . $this->telefono_donante . "','" . $this->carnet . "','" . $this->historial . "')";
+    ('" . $this->getNombre_donante() . "','" . $this->getApellido_donante() . "','" . $this->getEstado_donante() . "','" . $this->getId_departamento() . "','"  . $this->getId_municipio() . "','" . $this->getId_sangre() . "','" . $this->getPrueba_donante() . "','" . $this->getTelefono_donante() . "','" . $this->getCarnet() . "','" . $this->getHistorial() . "')";
     // $query = $this->db->prepare("INSERT INTO " . self::TABLE_NAME . " ""
     // echo $sql . "<br>";
     if (!$result = $this->db->query($sql)) {

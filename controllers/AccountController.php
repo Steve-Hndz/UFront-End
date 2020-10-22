@@ -58,7 +58,9 @@ class AccountController
         $donante->setId_municipio($_POST['municipio']);
         $donante->setHistorial($_POST['historial']);
         $donante->setCarnet($_POST['carnet']);
-        
+        $donante->setPrueba_donante('Yes');//Este valor esta colocado de manera estatica ya que no estan en el formulario
+        $donante->setEstado_donante('Active');//Este valor esta colocado de manera estatica ya que no estan en el formulario
+
         $createResult = $donante->create();
 
         var_dump($createResult); // delete these line

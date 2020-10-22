@@ -55,14 +55,16 @@
               <img class="form__group-img" src="<?=BASE_DIR?>assets/images/gota.png" alt="" />
               <select class="form__group-select" name="sangre" id="sangre" required>
               <option disabled selected>Tipo de Sangre</option>
-              <option value="">O negativo</option>
-              <option value="">O positivo</option>
-              <option value="">A negativo</option>
-              <option value="">A positivo</option>
-              <option value="">B negativo</option>
-              <option value="">B positivo</option>
-              <option value="">AB positivo</option>
-              <option value="">AB positivo</option>
+              <option value="1">ORH positivo</option>
+              <option value="2">ORH negativo</option>
+              <option value="3">O negativo</option>
+              <option value="4">O positivo</option>
+              <option value="5">A negativo</option>
+              <option value="6">A positivo</option>
+              <option value="7">B negativo</option>
+              <option value="8">B positivo</option>
+              <option value="9">AB negativo</option>
+              <option value="10">AB positivo</option>
               </select>
           </div>
 
@@ -73,9 +75,9 @@
 
           <div class="form__group">
             <h3>¿Posee carnet COVID-19?</h3>
-            <input type="radio" name="carnet" value="si" required>
+            <input type="radio" name="carnet" value="Yes" required>
             <label for="carnet">Si</label>
-            <input type="radio" name="carnet" value="no" required>
+            <input type="radio" name="carnet" value="No" required>
             <label for="carnet">No</label>
           </div>
 
