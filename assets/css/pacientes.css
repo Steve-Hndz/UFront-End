@@ -1,0 +1,315 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("root.css");
+@import url("button.css");
+
+.view {
+  display: flex;
+  padding: 0px 1em;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+}
+
+.pacientes {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+.pacientes__container-img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pacientes__img {
+  width: 100%;
+  align-content: center;
+}
+
+.pacientes__container-title {
+  width: 100%;
+  text-align: center;
+}
+.pacientes__txtregistrar {
+  width: 100%;
+  text-align: center;
+}
+.pacientes__txtregistrar p {
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: var(--font-size-medium);
+  vertical-align: text-bottom;
+}
+
+.pacientes__txtregistrar p span {
+  color: var(--color-accent);
+  font-size: var(--font-size-medium);
+  font-weight: normal;
+}
+.pacientes__title {
+  font-size: var(--font-size-xbig);
+  color: var(--color-black);
+}
+
+.pacientes__container {
+  background-color: var(--color-white);
+  width: 60%;
+  margin-left: 20px;
+  padding: 1%;
+  -webkit-box-shadow: 0 2px 9px 0 #000000;
+  box-shadow: 0 2px 9px 0 #000000;
+  -webkit-border-radius: 11px 11px 11px 11px;
+  border-radius: 11px 11px 11px 11px;
+}
+
+.pacientes__form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.pacientes__select-tittle {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 14px;
+  justify-content: left;
+  left: 0;
+}
+.pacientes__select-tittle p {
+  font-size: var(--font-medium);
+  color: var(--color-black);
+  margin-bottom: 13px;
+  font-weight: bold;
+}
+.select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 9px 14px;
+  outline: 0;
+  border: 2px solid #837f7f;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #837f7f;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 14px;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select:hover,
+.select select:focus {
+  color: #000000;
+  background: #f6f6f6;
+}
+.select select:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.select_arrow {
+  position: absolute;
+  top: 9px;
+  right: 7%;
+  width: 14px;
+  height: 14px;
+  border: solid #837f7f;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+  border-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+  border-top-color: #cccccc;
+}
+
+.pacientes__input {
+  display: flex;
+  max-width: 370px;
+  margin: 15px;
+  margin-left: 12%;
+  width: 100%;
+  margin-top: 45.6px;
+}
+.pacientes__input input {
+  width: 100%;
+  max-height: 38px;
+  padding: 9px 14px;
+  font-size: 14px;
+  border-width: 2px;
+  border-color: #837f7f;
+  background-color: #ffffff;
+  color: #000000;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+.pacientes__input input:focus {
+  outline: none;
+}
+
+.pacientes__input button {
+  margin-left: 10px;
+  font-size: 35px;
+  border-width: 0;
+  border-color: #ffffff;
+  background-color: #ffffff;
+  color: #837f7f;
+  border-style: none;
+}
+
+/*---- Diseños para tablas ----- */
+
+.content_table {
+    width: auto;
+    padding: 10px;
+    height: 60vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow: auto;
+  }
+
+  .table_full {
+    margin: auto;
+    width: auto;
+    border-radius: 10px;
+    border-collapse: collapse;
+    border: solid 0.5px #b1b1b1;
+  }
+
+  .title_table {
+    border-bottom: solid 3px #a1a1a1a2;
+  }
+
+  .title_table td {
+    color: rgb(24, 24, 24);
+    background: white;
+    text-align: left;
+    width: 180px;
+    padding: 20px;
+  }
+
+  .body_table td {
+    text-align: left;
+    padding: 13px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #bbbbbb69;
+  }
+
+  .tipe_blood {
+    color: #e7042a;
+  }
+
+  tr:hover {
+    background-color: #fc836e;
+  }
+
+@media (max-width: 768px) {
+  .view {
+    height: auto;
+    margin-top: 1em;
+    background-image: url("http://127.0.0.1/web/assets/images/clip-pacientes.png");
+    background-position: center;
+    background-size: cover;
+    flex-direction: column;
+    padding-bottom: 1em;
+  }
+
+  .pacientes {
+    z-index: 1;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  .pacientes__container-img {
+    display: none;
+  }
+
+  .pacientes__container {
+    width: 90%;
+  }
+
+  .pacientes__form {
+    display: inline-block;
+    width: 100%;
+    margin: 10px;
+    margin-left: -10px;
+    padding: 20px;
+  }
+
+  .pacientes__input {
+    max-width: 100%;
+    margin: 13px;
+    margin-top: 20px;
+  }
+
+  .pacientes__select-tittle {
+    max-width: 100%;
+  }
+  .pacientes__txtregistrar {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .content_table{
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    margin-left: -10px;
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .content_table {
+    padding: 0px;
+  }
+
+  .table_full {
+    width: auto;
+    border-collapse: unset;
+    border: 0px;
+  }
+
+  .table_full tr {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-bottom: 15px;
+    border: solid 0.5px #b1b1b1;
+    background: var(--color-light);
+    border-radius: 15px;
+  }
+
+  .table_full thead {
+    display: none;
+  }
+
+  .table_full td[data-titulo]::before {
+    content: attr(data-titulo);
+  }
+}
