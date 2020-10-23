@@ -33,9 +33,12 @@ class AccountController
     require_once "models/Sangre.php";
     $municipiosList = array();
     $departamentosList = array();
+    $sangreModel = array();
     $departamentoModel = new Departamento();
     $municipiosModel = new Municipio();
+    $sangreModel = new Sangre();
     $departamentosList = $departamentoModel->list(1, 14);
+    $tipoSangreList = $sangreModel->list(1, 14);
 
     $municipiosList = $municipiosModel->list(1, 10000);
     if (count($_POST) > 0) {
