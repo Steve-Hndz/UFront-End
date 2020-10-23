@@ -88,10 +88,14 @@ class AccountController
         $paciente->setNombre_paciente($_POST['nombre']);
         $paciente->setApellido_paciente($_POST['apellido']);
         $paciente->setTelefono_paciente($_POST['telefono']);
+        $paciente->setCorreo_paciente('correo@gmail.com');//Este valor esta colocado de manera estatica ya que no estan en el formulario
+        $paciente->setId_sangre($_POST['sangre']);
         $paciente->setId_departamento($_POST['departamento']);
         $paciente->setId_municipio($_POST['municipio']);
+        $paciente->setEstado_paciente('Estado');//Este valor esta colocado de manera estatica ya que no estan en el formulario
         $paciente->setId_hospital($_POST['hospital']);
-        $paciente->setId_sangre($_POST['sangre']);
+        $paciente->setContraseñaPaciente('password');//Este valor esta colocado de manera estatica ya que no estan en el formulario
+        
         //$paciente->setDescripcion($_POST['descripcion']);//Lo dejo comentado porque no esta declarado en el modelo ni en base de datos
 
         $createResult = $paciente->create();
@@ -108,9 +112,9 @@ class AccountController
       $departamentoModel = new Departamento();
       $municipiosModel = new Municipio();
       $sangreModel = new Sangre();
-      $departamentosList = $departamentoModel->list(1, 14);
-      // $sangreList = $sangreModel->list(1, 20);
 
+      $departamentosList = $departamentoModel->list(1, 14);
+      $sangreList = $sangreModel->list(1, 20);
       $municipiosList = $municipiosModel->list(1, 10000);
 
       require_once "views/registerPaciente.php";

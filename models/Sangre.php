@@ -38,8 +38,7 @@ class Sangre extends MySqlConnection{
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->crateSqlSort($sort);
     $sql .= " limit " . $limit . " offset " . $offset;
-    echo $sql . "<br>"; // pueden comentar usar esta linea solo en desarrollo para verificar el sql generado, para ver si esta bien
-    
+
     $data = array();
     if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
       while ($obj = $result->fetch_object()) {

@@ -55,6 +55,11 @@
               <img class="form__group-img" src="<?=BASE_DIR?>assets/images/gota.png" alt="" />
               <select class="form__group-select" name="sangre" id="sangre" required>
               <option disabled selected>Tipo de Sangre</option>
+              <?php foreach ($sangreList as $sangre) { ?>
+                <option value="<?=$sangre->id_sangre?>"><?=$sangre->nombre_sangre?></option>
+              <?php } ?>
+              
+              <!--
               <option value="">O negativo</option>
               <option value="">O positivo</option>
               <option value="">A negativo</option>
@@ -63,6 +68,7 @@
               <option value="">B positivo</option>
               <option value="">AB positivo</option>
               <option value="">AB positivo</option>
+              -->
               </select>
           </div>
 
