@@ -48,21 +48,21 @@
 
           <div class="form__group">
             <img class="form__group-img" src="<?=BASE_DIR?>assets/images/map.png" alt="" />
-            <input class="form__group-input" type="text" name="hospital" placeholder="Nombre de Hospital" required/>
+            <select class="form__group-select" name="hospital" id="hospital" required>
+              <option disabled selected>Hospitales</option>
+              <?php foreach ($hospitalesList as $hospitales) { ?>
+                <option value="<?=$hospitales->id_hospital?>"><?=$hospitales->nombre_hospital?></option>
+              <?php } ?>
+              </select>
           </div>
 
           <div class="form__group">
               <img class="form__group-img" src="<?=BASE_DIR?>assets/images/gota.png" alt="" />
               <select class="form__group-select" name="sangre" id="sangre" required>
               <option disabled selected>Tipo de Sangre</option>
-              <option value="">O negativo</option>
-              <option value="">O positivo</option>
-              <option value="">A negativo</option>
-              <option value="">A positivo</option>
-              <option value="">B negativo</option>
-              <option value="">B positivo</option>
-              <option value="">AB positivo</option>
-              <option value="">AB positivo</option>
+              <?php foreach ($tipoSangreList as $tiposSangre) { ?>
+                <option value="<?=$tiposSangre->id_sangre?>"><?=$tiposSangre->nombre_sangre?></option>
+              <?php } ?>
               </select>
           </div>
 

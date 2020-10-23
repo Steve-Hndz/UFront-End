@@ -1,7 +1,7 @@
 <?php
 
 require_once "database/MySqlConnection.php";
-
+require_once "poo/interfaces/IMysqlActions.php";
 class Paciente extends MySqlConnection implements IMysqlActions{
 
     const TABLE_NAME = 'tbl_pacientes';
@@ -220,9 +220,10 @@ class Paciente extends MySqlConnection implements IMysqlActions{
 
   public function create()
   {
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (`nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`, `contrasenia`) VALUES 
-    ('" . $this->getNombre_paciente() . "','" . $this->getApellido_paciente() . "','" .$this->getTelefono_paciente()."','".$this->getCorreo_paciente()."',". $this->getId_sangre().",". $this->getId_departamento() . ","  . $this->getId_municipio() . "," . $this->getEstado_paciente() . "," . $this->getId_hospital() . ",'" . $this->getContraseñaPaciente. "')";
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (`nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `id_hospital`) VALUES 
+    ('" . $this->getNombre_paciente() . "','" . $this->getApellido_paciente() . "','" .$this->getTelefono_paciente()."','".$this->getCorreo_paciente()."',". $this->getId_sangre().",". $this->getId_departamento() . ","  . $this->getId_municipio() . "," . $this->getId_hospital() . ")";
 
+    echo $sql;
     if (!$result = $this->db->query($sql)) {
       return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
     }

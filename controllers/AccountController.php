@@ -33,7 +33,7 @@ class AccountController
     require_once "models/Sangre.php";
     $municipiosList = array();
     $departamentosList = array();
-    $sangreModel = array();
+    $tipoSangreList = array();
     $departamentoModel = new Departamento();
     $municipiosModel = new Municipio();
     $sangreModel = new Sangre();
@@ -63,8 +63,14 @@ class AccountController
         $donante->setCarnet($_POST['carnet']);
         
         $createResult = $donante->create();
-
-        var_dump($createResult); // delete these line
+        try {
+          $createResult = $paciente->create();
+          var_dump($createResult);
+          if ($createResult == 1) header("Location: " . BASE_DIR . "Donantes/list");
+          else header("Location: " . BASE_DIR . "Account/RegistroDonante");
+        } catch (\Throwable $th) {
+          header("Location: " . BASE_DIR . "Account/RegistroDonante");
+        }
         // add here a view
       }
     } else {
@@ -91,23 +97,36 @@ class AccountController
         $paciente->setId_hospital($_POST['hospital']);
         $paciente->setId_sangre($_POST['sangre']);
         //$paciente->setDescripcion($_POST['descripcion']);//Lo dejo comentado porque no esta declarado en el modelo ni en base de datos
-
-        $createResult = $paciente->create();
-        var_dump($createResult); // delete these line
+        try {
+          $createResult = $paciente->create();
+          var_dump($createResult);
+          if ($createResult == 1) header("Location: " . BASE_DIR . "Pacientes/list");
+          else header("Location: " . BASE_DIR . "Account/RegistroPaciente");
+        } catch (\Throwable $th) {
+          header("Location: " . BASE_DIR . "Account/RegistroPaciente");
+        }
+        
+        
         // add here a view
       }
     } else {
       require_once "models/Departamento.php";
       require_once "models/Municipio.php";
       require_once "models/Sangre.php";
-
+      require_once "models/Hospital.php";
+      
+      $tipoSangreList = array();
       $municipiosList = array();
       $departamentosList = array();
+      $hospitalesList = array();
+
       $departamentoModel = new Departamento();
       $municipiosModel = new Municipio();
       $sangreModel = new Sangre();
+      $hospitalModel = new Hospital();
+      $tipoSangreList = $sangreModel->list(1, 14);
       $departamentosList = $departamentoModel->list(1, 14);
-      // $sangreList = $sangreModel->list(1, 20);
+      $hospitalesList = $hospitalModel->list(1, 30);
 
       $municipiosList = $municipiosModel->list(1, 10000);
 

@@ -1,8 +1,8 @@
 <?php
 
 require_once "database/MySqlConnection.php";
-
-class Donante extends MySqlConnection implements IMysqlActions{
+require_once "poo/interfaces/IMysqlActions.php";
+class Donante extends MySqlConnection implements IMysqlActions {
 
   const TABLE_NAME = 'tbl_donantes';
 

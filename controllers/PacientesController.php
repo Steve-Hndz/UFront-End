@@ -1,6 +1,5 @@
 <?php
 
-require_once 'models/IMysqlActions.php';
 
 class PacientesController
 {
