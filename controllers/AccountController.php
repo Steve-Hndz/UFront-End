@@ -106,16 +106,20 @@ class AccountController
       require_once "models/Departamento.php";
       require_once "models/Municipio.php";
       require_once "models/Sangre.php";
+      require_once "models/Hospital.php";
 
       $municipiosList = array();
       $departamentosList = array();
+
       $departamentoModel = new Departamento();
       $municipiosModel = new Municipio();
       $sangreModel = new Sangre();
+      $hospitalModel = new Hospital();
 
       $departamentosList = $departamentoModel->list(1, 14);
       $sangreList = $sangreModel->list(1, 20);
       $municipiosList = $municipiosModel->list(1, 10000);
+      $hospitalList = $hospitalModel->list(1, 1000);
 
       require_once "views/registerPaciente.php";
     }

@@ -48,7 +48,15 @@
 
           <div class="form__group">
             <img class="form__group-img" src="<?=BASE_DIR?>assets/images/map.png" alt="" />
-            <input class="form__group-input" type="text" name="hospital" placeholder="Nombre de Hospital" required/>
+            <!--
+              <input class="form__group-input" type="text" name="hospital" placeholder="Nombre de Hospital" required/>
+                -->
+              <select class="form__group-select" name="hospital" id="hospital" required>
+              <option disabled selected>Nombre de Hospital</option>
+              <?php foreach ($hospitalList as $hospital) { ?>
+                <option value="<?=$hospital->id_hospital?>"><?=$hospital->nombre_hospital?></option>
+              <?php } ?>
+              </select>
           </div>
 
           <div class="form__group">
