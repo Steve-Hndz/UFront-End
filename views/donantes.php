@@ -51,7 +51,7 @@
 
 
         <div class="content_table">
-            <table class="table_full">
+            <table class="table_full" id="dataTable">
                 <thead class="title_table">
                     <td data-titulo="nombre"><strong>Nombre</strong></td>
                     <td data-titulo="apellido"><strong>Apellido</strong></td>

@@ -23,12 +23,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/jeringa.svg">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/root.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/footer.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/register.css">
 	<link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/donantes.css">
+    
     <title>Donantes covid-19</title>
 </head>
 
