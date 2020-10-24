@@ -1,5 +1,4 @@
 <?php
-
 class DonantesController
 {
   public function __construct()
@@ -19,16 +18,22 @@ class DonantesController
     $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
     $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
 
+    $municipiosList = array();
+    $departamentosList = array();
     // echo $limit . "<br>";
     // $departamentos
     // $municipios
     $departamentoModel = new Departamento();
     $municipiosModel = new Municipio();
     $departamentosList = $departamentoModel->list(1, 14);
-    $municipiosList = $municipiosModel->list(1, 14);
+    
+    if (isset($filter['departamento'])) {
+      $municipiosFilter = ['departamento' => $filter['departamento']];
+      $municipiosList = $municipiosModel->list(1, 10000, $municipiosFilter);
+    }
     $donantes = new Donante();
     $list = $donantes->list($page, $limit, $filter, $sort);
-    // var_dump($departamentosList);
+    // var_dump($list);
     
     require_once 'views/donantes.php';
   }

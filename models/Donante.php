@@ -1,8 +1,8 @@
 <?php
 
 require_once "database/MySqlConnection.php";
-
-class Donante extends MySqlConnection{
+require_once "poo/interfaces/IMysqlActions.php";
+class Donante extends MySqlConnection implements IMysqlActions {
 
   const TABLE_NAME = 'tbl_donantes';
 
@@ -158,10 +158,10 @@ class Donante extends MySqlConnection{
               $sql .= "d.nombre_donante LIKE '%" . $value ."%'"; 
               break;
             case 'municipio':
-              $sql .= "m.nombre_municipio = " . $value ." "; 
+              $sql .= "m.id_municipio = " . $value ." "; 
               break;
             case 'departamento':
-              $sql .= "dp.nombre_departamento = " . $value ." "; 
+              $sql .= "dp.id_departamento = " . $value ." "; 
               break;
             case 'sangre':
               $sql .= "s.id_sangre = " . $value ." "; 
@@ -195,10 +195,10 @@ class Donante extends MySqlConnection{
               if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_donante " . $value ." "; 
               break;
             case 'municipio':
-              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_municipio " . $value ." "; 
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.nombre_municipio " . $value ." "; 
               break;
             case 'departamento':
-              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.id_departamento " . $value ." "; 
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " d.nombre_departamento " . $value ." "; 
               break;
             
             default:
@@ -257,4 +257,12 @@ class Donante extends MySqlConnection{
     }
     return $result;
   }
+
+    public function verifyPassword ($password, $hash) {
+        $isValidPassword = false;
+        if (password_verify($password, $hash)) {
+            $isValidPassword = true;
+        }
+        return $isValidPassword;
+    }
 }

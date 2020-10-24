@@ -10,7 +10,7 @@
     <div class="wrapper">
 
       <div class="form__holder">
-        <form action="" class="form">
+        <form action="" class="form" method="POST">
           <div class="form__group">
             <img class="form__group-img" src="<?=BASE_DIR?>assets/images/user.png"alt="" />
             <input class="form__group-input" type="text" name="nombre" placeholder="Nombre" required/>
@@ -30,20 +30,9 @@
             <img class="form__group-img" src="<?=BASE_DIR?>assets/images/map.png" alt="" />
               <select class="form__group-select" name="departamento" id="departamento" required>
               <option disabled selected>Departamento</option>
-              <option value="">Usulután</option>
-              <option value="">Ahuachapán</option>
-              <option value="">Cabañas</option>
-              <option value="">Chalatenango</option>
-              <option value="">Cuscatlán</option>
-              <option value="">La Libertad</option>
-              <option value="">La Paz</option>
-              <option value="">La Unión</option>
-              <option value="">Morazán</option>
-              <option value="">San Miguel</option>
-              <option value="">San Salvador</option>
-              <option value="">San Vicente</option>
-              <option value="">Santa Ana</option>
-              <option value="">Sonsonate</option>
+              <?php foreach ($departamentosList as $departamento) { ?>
+                <option value="<?=$departamento->id_departamento?>" <?=((isset($filter['departamento'])) && $filter['departamento'] == $departamento->id_departamento)? "selected":  ""?>><?=$departamento->nombre_departamento?></option>
+              <?php } ?>
               </select>
           </div>
 
@@ -51,27 +40,29 @@
               <img class="form__group-img" src="<?=BASE_DIR?>assets/images/map.png" alt="" />
               <select class="form__group-select" name="municipio" id="municipio" required>
               <option disabled selected>Municipio</option>
-              <option value=""></option>
+              <?php foreach ($municipiosList as $municipios) { ?>
+                <option value="<?=$municipios->id_municipio?>"><?=$municipios->nombre_municipio?></option>
+              <?php } ?>
               </select>
           </div>
 
           <div class="form__group">
             <img class="form__group-img" src="<?=BASE_DIR?>assets/images/map.png" alt="" />
-            <input class="form__group-input" type="text" name="hospital" placeholder="Nombre de Hospital" required/>
+            <select class="form__group-select" name="hospital" id="hospital" required>
+              <option disabled selected>Hospitales</option>
+              <?php foreach ($hospitalesList as $hospitales) { ?>
+                <option value="<?=$hospitales->id_hospital?>"><?=$hospitales->nombre_hospital?></option>
+              <?php } ?>
+              </select>
           </div>
 
           <div class="form__group">
               <img class="form__group-img" src="<?=BASE_DIR?>assets/images/gota.png" alt="" />
               <select class="form__group-select" name="sangre" id="sangre" required>
               <option disabled selected>Tipo de Sangre</option>
-              <option value="">O negativo</option>
-              <option value="">O positivo</option>
-              <option value="">A negativo</option>
-              <option value="">A positivo</option>
-              <option value="">B negativo</option>
-              <option value="">B positivo</option>
-              <option value="">AB positivo</option>
-              <option value="">AB positivo</option>
+              <?php foreach ($tipoSangreList as $tiposSangre) { ?>
+                <option value="<?=$tiposSangre->id_sangre?>"><?=$tiposSangre->nombre_sangre?></option>
+              <?php } ?>
               </select>
           </div>
 

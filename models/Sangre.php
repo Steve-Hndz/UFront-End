@@ -29,4 +29,20 @@ class Sangre extends MySqlConnection{
     {
         parent::__construct();
     }
+
+    public function list ($page = 1, $limit = 20, $filter = [], $sort = []){
+        $offset = ($page - 1) * $limit;
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " d";
+        $sql .= " limit " . $limit . " offset " . $offset;
+        // echo "<p></p>" . $sql . "<br>";
+
+        $data = array();
+        if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
+
+          while ($obj = $result->fetch_object()) {
+            array_push($data, $obj);
+          }
+        }
+        return $data;
+    }
 }

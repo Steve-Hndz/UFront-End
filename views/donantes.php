@@ -20,7 +20,7 @@
                     <select>
                         <option>--Select--</option>
                         <?php foreach ($departamentosList as $departamento) { ?>
-                            <option value="<?=$departamento->nombre_departamento?>"><?=$departamento->nombre_departamento?></option>
+                            <option value="<?=$departamento->id_departamento?>" <?=((isset($filter['departamento'])) && $filter['departamento'] == $departamento->id_departamento)? "selected":  ""?>><?=$departamento->nombre_departamento?></option>
                         <?php } ?>
                     </select>
                     <div class="select_arrow">
@@ -32,10 +32,9 @@
                 <div class="select">
                     <select>
                         <option>--Select--</option>
-                        <option>Hello 1</option>
-                        <option>Hello 2</option>
-                        <option>Hello 3</option>
-                        <option>Hello 4</option>
+                        <?php foreach ($municipiosList as $municipios) { ?>
+                            <option value="<?=$municipios->nombre_municipio?>"><?=$municipios->nombre_municipio?></option>
+                        <?php } ?>
                     </select>
                     <div class="select_arrow">
                     </div>
@@ -52,7 +51,7 @@
 
 
         <div class="content_table">
-            <table class="table_full">
+            <table class="table_full" id="dataTable">
                 <thead class="title_table">
                     <td data-titulo="nombre"><strong>Nombre</strong></td>
                     <td data-titulo="apellido"><strong>Apellido</strong></td>
