@@ -61,7 +61,7 @@
 .pacientes__container {
   background-color: var(--color-white);
   width: 60%;
-  margin-left: 20px;
+  margin-left: 25px;
   padding: 1%;
   -webkit-box-shadow: 0 2px 9px 0 #000000;
   box-shadow: 0 2px 9px 0 #000000;
@@ -181,50 +181,51 @@
 /*---- Diseños para tablas ----- */
 
 .content_table {
-    width: auto;
-    padding: 10px;
-    height: 60vh;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    overflow: auto;
-  }
+  width: auto;
+  padding: 1;
+  height: 60vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow: auto;
+  margin-left: 5px;
+}
 
-  .table_full {
-    margin: auto;
-    width: auto;
-    border-radius: 10px;
-    border-collapse: collapse;
-    border: solid 0.5px #b1b1b1;
-  }
+.table_full {
+  margin: auto;
+  width: auto;
+  border-radius: 10px;
+  border-collapse: collapse;
+  border: solid 0.5px #b1b1b1;
+}
 
-  .title_table {
-    border-bottom: solid 3px #a1a1a1a2;
-  }
+.title_table {
+  border-bottom: solid 3px #a1a1a1a2;
+}
 
-  .title_table td {
-    color: rgb(24, 24, 24);
-    background: white;
-    text-align: left;
-    width: 180px;
-    padding: 20px;
-  }
+.title_table td {
+  color: rgb(24, 24, 24);
+  background: white;
+  text-align: left;
+  width: 180px;
+  padding: 20px;
+}
 
-  .body_table td {
-    text-align: left;
-    padding: 13px;
-  }
+.body_table td {
+  text-align: left;
+  padding: 13px;
+}
 
-  tr:nth-child(even) {
-    background-color: #bbbbbb69;
-  }
+tr:nth-child(even) {
+  background-color: #bbbbbb69;
+}
 
-  .tipe_blood {
-    color: #e7042a;
-  }
+.tipe_blood {
+  color: #e7042a;
+}
 
-  tr:hover {
-    background-color: #fc836e;
-  }
+tr:hover {
+  background-color: #fc836e;
+}
 
 @media (max-width: 768px) {
   .view {
@@ -235,6 +236,8 @@
     background-size: cover;
     flex-direction: column;
     padding-bottom: 1em;
+    margin-left: -2%;
+    padding: 2%;
   }
 
   .pacientes {
@@ -272,44 +275,5 @@
     width: 100%;
     display: inline-block;
     text-align: center;
-  }
-
-  .content_table{
-    width: 100%;
-    height: auto;
-    margin: 10px;
-    margin-left: -10px;
-    padding: 20px;
-  }
-
-}
-
-@media (max-width: 480px) {
-  .content_table {
-    padding: 0px;
-  }
-
-  .table_full {
-    width: auto;
-    border-collapse: unset;
-    border: 0px;
-  }
-
-  .table_full tr {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    margin-bottom: 15px;
-    border: solid 0.5px #b1b1b1;
-    background: var(--color-light);
-    border-radius: 15px;
-  }
-
-  .table_full thead {
-    display: none;
-  }
-
-  .table_full td[data-titulo]::before {
-    content: attr(data-titulo);
   }
 }
