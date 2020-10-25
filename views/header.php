@@ -5,6 +5,7 @@
             case 'About':
                 $selected = 'ACERCA DE';
                 break;
+            case 'Pacientes':
             case 'Donantes':
                 $selected = 'INFORMACIÓN';
                 break;
@@ -88,4 +89,4 @@
             </ul>
         </nav>
     </header>
-<script type="text/javascript" src="<?=BASE_DIR;?>js/main.js"></script>
+

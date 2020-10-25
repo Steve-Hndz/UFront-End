@@ -52,18 +52,19 @@
 
 
         <div class="content_table">
-            <table class="table_full">
+            <table class="table_full" id="tblDonantes">
                 <thead class="title_table">
-                    <td data-titulo="nombre"><strong>Nombre</strong></td>
-                    <td data-titulo="apellido"><strong>Apellido</strong></td>
-                    <td data-titulo="departamento"><strong>Departamento</strong></td>
-                    <td data-titulo="municipio"><strong>Municipio</strong></td>
-                    <td data-titulo="tipoSangre"><strong>Tipo Sangre</strong></td>
-                    <td data-titulo="telefono"><strong>Teléfono</strong></td>
-                    <td data-titulo="estado"><strong>Estado</strong></td>
+                    <th data-titulo="nombre"><strong>Nombre</strong></th>
+                    <th data-titulo="apellido"><strong>Apellido</strong></th>
+                    <th data-titulo="departamento"><strong>Departamento</strong></th>
+                    <th data-titulo="municipio"><strong>Municipio</strong></th>
+                    <th data-titulo="tipoSangre"><strong>Tipo Sangre</strong></th>
+                    <th data-titulo="telefono"><strong>Teléfono</strong></th>
+                    <th data-titulo="estado"><strong>Estado</strong></th>
                 </thead>
-                <?php foreach ($list as $donante) : ?>
                 <tbody>
+                <?php foreach ($list as $donante) : ?>
+                
                     <tr class="body_table">
                         <td data-titulo="Nombre: "><strong><?php echo $donante->nombre_donante ?></strong></td>
                         <td data-titulo="Apellido: "><strong><?php echo $donante->apellido_donante ?></strong></td>
@@ -73,8 +74,9 @@
                         <td data-titulo="Telefono: "><strong><?php echo $donante->telefono_donante ?></strong></td>
                         <td data-titulo="Estado: "><strong><?php echo $donante->estado_donante ?></strong></td>
                     </tr>
-                </tbody>
+                
                 <?php endforeach; ?>
+                </tbody>
             </table>
         </div>
 
