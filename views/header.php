@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/register.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/donantes.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/pacientes.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/about.css">
     <title>Ayuda/Dona/Salva</title>
 
 </head>
