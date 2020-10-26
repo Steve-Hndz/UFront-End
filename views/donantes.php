@@ -11,7 +11,7 @@
 
             <div class="donantes__txtregistrar">
                 <p>¿Quieres donar? <span>Puedes registrarte como donante Aquí</span></p>
-                <button class="button button--outline"> Registro de Donante ➤</button>
+                <a href="<?=BASE_DIR?>Account/register&type=donante" class="button button--outline"> Registro de Donante ➤</a>
             </div>
         </div>
 
@@ -55,32 +55,36 @@
             </div>
         </div>    
         -->
-            <div class="donante-content_table">
-                <table class="table_full" id="dataTable">
-                    <thead class="title_table">
-                        <td><strong>Nombre</strong></td>
-                        <td><strong>Apellido</strong></td>
-                        <td><strong>Departamento</strong></td>
-                        <td><strong>Municipio</strong></td>
-                        <td><strong>Tipo Sangre</strong></td>
-                        <td><strong>Teléfono</strong></td>
-                        <td><strong>Estado</strong></td>
-                    </thead>
-                    <?php foreach ($list as $donante) : ?>
-                    <tbody>
-                        <tr class="body_table">
-                            <td><strong><?php echo $donante->nombre_donante ?></strong></td>
-                            <td><strong><?php echo $donante->apellido_donante ?></strong></td>
-                            <td><strong> <?php echo $donante->nombre_departamento ?> </strong></td>
-                            <td><strong><?php echo $donante->nombre_municipio ?></strong></td>
-                            <td class="tipe_blood"><strong><?php echo $donante->nombre_sangre ?></strong></td>
-                            <td><strong><?php echo $donante->telefono_donante ?></strong></td>
-                            <td><strong><?php echo $donante->estado_donante ?></strong></td>
-                        </tr>
-                    </tbody>
-                    <?php endforeach; ?>
-                </table>
-            </div>
+
+
+        <div class="content_table">
+            <table class="table_full" id="tblDonantes">
+                <thead class="title_table">
+                    <th data-titulo="nombre"><strong>Nombre</strong></th>
+                    <th data-titulo="apellido"><strong>Apellido</strong></th>
+                    <th data-titulo="departamento"><strong>Departamento</strong></th>
+                    <th data-titulo="municipio"><strong>Municipio</strong></th>
+                    <th data-titulo="tipoSangre"><strong>Tipo Sangre</strong></th>
+                    <th data-titulo="telefono"><strong>Teléfono</strong></th>
+                    <th data-titulo="estado"><strong>Estado</strong></th>
+                </thead>
+                <tbody>
+                <?php foreach ($list as $donante) : ?>
+                
+                    <tr class="body_table">
+                        <td data-titulo="Nombre: "><strong><?php echo $donante->nombre_donante ?></strong></td>
+                        <td data-titulo="Apellido: "><strong><?php echo $donante->apellido_donante ?></strong></td>
+                        <td data-titulo="Departamento: "><strong> <?php echo $donante->nombre_departamento ?> </strong></td>
+                        <td data-titulo="Municipio: "><strong><?php echo $donante->nombre_municipio ?></strong></td>
+                        <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong><?php echo $donante->nombre_sangre ?></strong></td>
+                        <td data-titulo="Telefono: "><strong><?php echo $donante->telefono_donante ?></strong></td>
+                        <td data-titulo="Estado: "><strong><?php echo $donante->estado_donante ?></strong></td>
+                    </tr>
+                
+                <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
+
     </div>
 </main>

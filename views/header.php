@@ -5,6 +5,7 @@
             case 'About':
                 $selected = 'ACERCA DE';
                 break;
+            case 'Pacientes':
             case 'Donantes':
                 $selected = 'INFORMACIÓN';
                 break;
@@ -95,6 +96,3 @@
             </ul>
         </nav>
     </header>
-    <!-- agrego jQuery  porque me daba error en el $ del main.js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="<?=BASE_DIR?>assets/js/main.js"></script>

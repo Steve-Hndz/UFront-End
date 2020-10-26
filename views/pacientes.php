@@ -9,7 +9,7 @@
             </div>
             <div class="pacientes__txtregistrar">
                 <p>¿Necesitas ayuda? <span>Puedes registrarte como paciente aquí</span></p>
-                <button class="button button--outline"> Registro de Paciente ➤</button>
+                <a href="<?=BASE_DIR?>Account/register&type=paciente" class="button button--outline"> Registro de Paciente ➤</a>
             </div>
         </div>
 
@@ -54,19 +54,20 @@
             -->
 
             <div class="content_table">
-                <table class="table_full" id="dataTable">
+                <table class="table_full" id="tblPacientes">
                     <thead class="title_table">
-                        <td data-titulo="nombre"><strong>Nombre</strong></td>
-                        <td data-titulo="apellido"><strong>Apellido</strong></td>
-                        <td data-titulo="departamento"><strong>Departamento</strong></td>
-                        <td data-titulo="municipio"><strong>Municipio</strong></td>
-                        <td data-titulo="hospital"><strong>Hospital</strong></td>
-                        <td data-titulo="tipoSangre"><strong>Tipo Sangre</strong></td>
-                        <td data-titulo="telefono"><strong>Teléfono</strong></td>
-                        <td data-titulo="estado"><strong>Estado</strong></td>
+                        <th data-titulo="nombre"><strong>Nombre</strong></th>
+                        <th data-titulo="apellido"><strong>Apellido</strong></th>
+                        <th data-titulo="departamento"><strong>Departamento</strong></th>
+                        <th data-titulo="municipio"><strong>Municipio</strong></th>
+                        <th data-titulo="hospital"><strong>Hospital</strong></th>
+                        <th data-titulo="tipoSangre"><strong>Tipo Sangre</strong></th>
+                        <th data-titulo="telefono"><strong>Teléfono</strong></th>
+                        <th data-titulo="estado"><strong>Estado</strong></th>
                     </thead>
+                    <tbody>
                     <?php foreach ($list as $paciente) : ?>
-                        <tbody>
+                        
                             <tr class="body_table">
                                 <td data-titulo="Nombre: "><strong><?php echo $paciente->nombre_paciente ?></strong></td>
                                 <td data-titulo="Apellido: "><strong><?php echo $paciente->apellido_paciente ?></strong></td>
@@ -78,8 +79,9 @@
                                 <td data-titulo="Telefono: "><strong><?php echo $paciente->telefono_paciente ?></strong></td>
                                 <td data-titulo="Estado: "><strong><?php echo $paciente->estado_paciente ?></strong></td>
                             </tr>
-                        </tbody>
+                        
                     <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
         </div>
