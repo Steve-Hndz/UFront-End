@@ -1,7 +1,6 @@
 <main>
     <div class="donantes__view">
         <div class="donantes">
-
             <div class="donantes__container-title">
                 <h3 class="donantes__title">Información de los donantes</h3>
             </div>
@@ -11,7 +10,7 @@
             </div>
 
             <div class="donantes__txtregistrar">
-                <p class="donantes__p">¿Quieres donar? <span>Puedes registrarte como donante Aquí</span></p>
+                <p>¿Quieres donar? <span>Puedes registrarte como donante Aquí</span></p>
                 <button class="button button--outline"> Registro de Donante ➤</button>
             </div>
         </div>

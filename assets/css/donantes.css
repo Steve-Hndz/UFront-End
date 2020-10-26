@@ -34,8 +34,6 @@
   height: auto;
   display: flex;
   justify-content: center;
-  margin-top: -50px;
-  margin-bottom: -35px;
 }
 
 .donantes__img {
@@ -45,12 +43,10 @@
 
 .donantes__container-title {
   width: 100%;
-  display: block;
   text-align: center;
 }
 .donantes__txtregistrar {
   width: 100%;
-  display: inline-block;
   text-align: center;
 }
 .donantes__txtregistrar p {
@@ -58,18 +54,14 @@
   font-weight: bold;
   font-size: var(--font-size-medium);
   vertical-align: text-bottom;
-  margin-top: 13px;
-  margin-bottom: 13px;
 }
 
 .donantes__txtregistrar p span {
   color: var(--color-accent);
   font-size: var(--font-size-medium);
   font-weight: normal;
-  margin-right: 15px;
 }
 .donantes__title {
-  margin: 1em 0;
   font-size: var(--font-size-xbig);
   color: var(--color-black);
 }
@@ -237,6 +229,7 @@ tr:hover {
   .donantes__view {
     height: auto;
     margin-top: 1em;
+    background-image: url("http://127.0.0.1/web/assets/images/donantes.png");
     background-position: center;
     background-size: cover;
     flex-direction: column;
@@ -244,7 +237,7 @@ tr:hover {
     margin-left: -2%;
     padding: 2%;
   }
-  .donantes__img {
+  .donantes__container-img {
     display: none;
   }
   .donantes__form {
@@ -278,8 +271,12 @@ tr:hover {
   }
   .donantes {
     z-index: 1;
+    margin-left: 1em;
     margin-bottom: 1em;
     width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
   .donantes__container {
     width: 90%;

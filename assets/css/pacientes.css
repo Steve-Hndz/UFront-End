@@ -242,8 +242,12 @@ tr:hover {
 
   .pacientes {
     z-index: 1;
+    margin-left: 1em;
     margin-bottom: 1em;
     width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
   .pacientes__container-img {
