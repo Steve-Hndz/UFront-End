@@ -34,7 +34,7 @@ class PacientesController
     }
     $donantes = new Paciente();
     $list = $donantes->list($page, $limit, $filter, $sort);
-    // var_dump($list);
+    var_dump($list);
     
     require_once 'views/pacientes.php';
   }
