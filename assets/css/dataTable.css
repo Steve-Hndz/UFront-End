@@ -1,0 +1,14 @@
+/* Estilos de https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css
+ * 
+ * se sobre escribe el estilo del datatable
+ */
+
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: transparent;
+  margin-left: 3px;
+  /*Aqui es el espaciado del input, éste afecta a toda la parte de arriba*/
+  margin-bottom: 30px;
+}

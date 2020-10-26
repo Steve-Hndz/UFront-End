@@ -14,6 +14,7 @@
         </div>
 
         <div class="pacientes__container">
+            <!--
             <div class="pacientes__form">
                 <div class="pacientes__select-tittle">
                     <p>Departamento</p>
@@ -50,7 +51,7 @@
                     </span>
                 </div>
             </div>
-
+            -->
 
             <div class="content_table">
                 <table class="table_full" id="dataTable">

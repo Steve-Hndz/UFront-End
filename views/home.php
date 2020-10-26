@@ -4,7 +4,7 @@
         <div class="presentation__container-title">
             <div>
                 <h1 class="presentation__title">Bienvenido a la página de donantes de covid-19</h1>
-                <p class="presentation__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque sed odio atque, dolores quia ipsum. Velit delectus dolore exercitationem atque ut doloribus, nobis aliquam. Fugit possimus obcaecati consequatur omnis incidunt!</p>
+                <p class="presentation__description">Ayuda, Dona, Salva. Es una nuevo proyecto propuesto por estudiantes de la carrera de Sistemas Informáticos de la Universidad Nacional de El Salvador, orientado a ayudar a muchas personas en la actual situación a la que se enfrenta el país, uniendo así tanto a pacientes que necesitan de donaciones de plasma, así como de personas dispuestas a ayudar con sus donaciones. Únete tú también.</p>
             </div>
             <div class="presentation__buttons">
                 <button class="button button--fill">
