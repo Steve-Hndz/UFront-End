@@ -19,7 +19,11 @@ class MunicipiosController
     $municipio = new Municipio();
     $list = $municipio->list($page, $limit, $filter, $sort);
 
-    var_dump($list);
+    $html = '<option disabled selected>Municipio</option>';
+    foreach ($list as $municipios) { 
+      $html .= '<option value="' . $municipios->id_municipio . '"> ' . $municipios->nombre_municipio . '</option>';
+    }
+    return $html;
   }
 
   public function create()
@@ -39,4 +43,9 @@ class MunicipiosController
       var_dump($createResult);
     //}
   }
+}
+
+$municipios = new MunicipiosController();
+if (isset($_POST['consulta'])){
+  echo $municipios->list();
 }
