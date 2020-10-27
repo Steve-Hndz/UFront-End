@@ -62,9 +62,8 @@ class AccountController
         $donante->setHistorial($_POST['historial']);
         $donante->setCarnet($_POST['carnet']);
         
-        $createResult = $donante->create();
         try {
-          $createResult = $paciente->create();
+          $createResult = $donante->create();
           var_dump($createResult);
           if ($createResult == 1) header("Location: " . BASE_DIR . "Donantes/list");
           else header("Location: " . BASE_DIR . "Account/RegistroDonante");
