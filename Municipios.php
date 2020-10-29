@@ -91,7 +91,7 @@ class Municipio extends MySqlConnection
       foreach ($rules as $key => $value) {
         $searchInFilters = array_search($key, $fields);
         if ($searchInFilters === false) $searchInFilters = -1;
-        echo "<br>";
+        
         if ($searchInFilters >= 0  ) {
           $value = strtoupper($value);
           if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";
@@ -160,7 +160,7 @@ if (isset($_REQUEST['departamento'])) {
 
     $municipio = new Municipio();
     $list = $municipio->list($page, $limit, $filter, $sort);
-    var_dump($list);
+
     $html = '<option disabled selected>Municipio</option>';
     foreach ($list as $municipios) { 
         $html .= '<option value="' . $municipios->id_municipio . '"> ' . $municipios->nombre_municipio . '</option>';

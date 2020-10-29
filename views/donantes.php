@@ -25,9 +25,6 @@
 
                     <select>
                         <option>--Select--</option>
-                      <?php foreach ($departamentosList as $departamento) { ?>
-                            <option value="<?=$departamento->nombre_departamento?>"><?=$departamento->nombre_departamento?></option>
-                        <?php } ?>
                     </select>
                     <div class="select_arrow">
                     </div>

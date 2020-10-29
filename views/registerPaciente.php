@@ -39,10 +39,7 @@
           <div class="form__group">
               <img class="form__group-img" src="<?=BASE_DIR?>assets/images/map.png" alt="" />
               <select class="form__group-select" name="municipio" id="municipio" required>
-              <option disabled selected>Municipio</option>
-              <?php foreach ($municipiosList as $municipios) { ?>
-                <option value="<?=$municipios->id_municipio?>"><?=$municipios->nombre_municipio?></option>
-              <?php } ?>
+                <option disabled selected>Municipio</option>
               </select>
           </div>
 

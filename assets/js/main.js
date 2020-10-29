@@ -7,6 +7,7 @@ hamburger.addEventListener('click', () => {
 
 
 $(document).ready(function(){
+
     $('#tblDonantes').DataTable({
         language: {
             "decimal": "",
@@ -52,39 +53,21 @@ $(document).ready(function(){
             }
         }
     })
-})
-$(buscar_datos());
-
-function buscar_datos(consulta){
-    $.ajax({
-        url: `/web/Municipios.php?departamento=${consulta}`,
-        type: 'POST',
-        dataType: 'html',
-    })
-        .done(function(respuesta){
-            $('#municipio').html(respuesta);
-        })
-        .fail(function(){
-            console.log("error");
-        })
-}
-
-$(document).on('change', '#departamento', function(){
-    var valor = $(this).val();
-    if (valor != "") {
-        console.log(valor)
-        buscar_datos(valor);
-    }else {
-        buscar_datos();
-    }
 });
 
-/* (() => {
+(() => {
     const departamentosSelect = document.getElementById('departamento')
-    departamentosSelect.addEventListener('change', (event) => {
-        const value = document.getElementById('departamento').value
-        console.log(value)
+    departamentosSelect.addEventListener('change', async (event) => {
+        const municipiosSelectInput = document.getElementById('municipio')
+        const departamentoId = document.getElementById('departamento').value
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const request = await fetch(`/web/Municipios.php?departamento=${departamentoId}`)
+        const selectOptions = await request.text()
+        municipiosSelectInput.innerHTML = selectOptions
     })
 })()
-
- */
