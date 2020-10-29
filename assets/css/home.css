@@ -1,48 +1,86 @@
 @import url('root.css');
 @import url('button.css');
-
-.presentation{
-   padding: 1em;
-    height: 100vh;
+.presentation {
+    height: 90vh;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.presentation__container-title{
+.presentation__container-title {
     padding: 1em;
     margin-top: -6em;
     width: 40%;
 }
 
-.presentation__title{
+.presentation__title {
     font-size: var(--font-size-xbig);
     color: var(--color-black);
     margin: .8em 0;
 }
 
-.presentation__description{
+.presentation__description {
     font-size: var(--font-medium);
     color: var(--color-black);
     margin: .8em 0;
 }
 
-.presentation__buttons{
+.presentation__buttons {
     margin: 1.2em 0;
 }
 
-.presentation__container-img{
+.presentation__container-img {
     width: 60%;
 }
 
-.presentation__img{
+.presentation__img {
     width: 110%;
 }
 
+/* --------- mobile responsive (768px)---------- */
+
 @media (max-width: 768px) {
-    .presentation__buttons{
+    .presentation__buttons {
         display: flex;
         justify-content: center;
         flex-direction: column;
+    }
+    .presentation {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        position: relative;
+    }
+    .presentation__container-title {
+        /* transform: translateY(-150px); */
+        width: 100%;
+        z-index: 10;
+        margin-top: -200px;
+    }
+    .presentation__title {
+        font-size: var(--font-size-xbig);
+        color: var(--color-black);
+        margin: .8em 0;
+        text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    }
+    .presentation__description {
+        font-size: var(--font-medium);
+        color: var(--color-black);
+        margin: .8em 0;
+    }
+    .presentation__buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 1.2em 0;
+    }
+    .presentation__container-img {
+        width: 100%;
+        margin-top: -50px;
+    }
+    .presentation__img {
+        opacity: .5;
+        width: 100%;
+        z-index: 1;
     }
 }

@@ -5,3 +5,10 @@ const links = document.querySelector('.navbar__links li');
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle("open");
 });
+
+$(document).ready(function(){
+
+    $('#dataTable').DataTable({
+
+    })
+});

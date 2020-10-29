@@ -1,22 +1,21 @@
 <?php
-
     $selected = 'INICIO';
     if (isset($_GET['controller'])) {
         switch ($_GET['controller']) {
             case 'About':
                 $selected = 'ACERCA DE';
                 break;
+            case 'Pacientes':
             case 'Donantes':
-                $selected = 'DONANTES';
+                $selected = 'INFORMACIÓN';
                 break;
-            case 'Usuario':
+            case 'Account':
                 $selected = 'REGISTRO';
                 break;
             default:
                 break;
         }
     }
-    echo $selected
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,23 +23,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?= BASE_DIR; ?>assets/images/jeringa.svg">
-    <!-- <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/style.css"> -->
+    <link rel="shortcut icon" href="assets/images/jeringa.svg">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/dataTable.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/root.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/home.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/footer.css">
-
-    <title>Donantes covid-19</title>
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/register.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/donantes.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/pacientes.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/about.css">
+    <title>Ayuda/Dona/Salva</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <a href="home.php" class="navbar__tittle">
-                <img src="<?=BASE_DIR?>assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
-                    <p class="navbar__logo-tittle">U-Safe</p>
+                <a href="<?=BASE_DIR?>" class="navbar__tittle">
+                    <img src="<?=BASE_DIR?>assets/images/jeringa.svg" alt="jeringa" class="navbar__logo-img">
+                    <p class="navbar__logo-tittle">ADS</p>
                 </a>
 
                 <div class="navbar__h1">
@@ -56,19 +59,39 @@
 
             <ul class="navbar__links">
                 <li class="navbar__link">
-                    <a href="<?=BASE_DIR?>" class="navbar__a <?=($selected == 'INICIO')? 'navbar__a--selected': ''?>">Inicio</a>
+                    <a href="<?=BASE_DIR?>"
+                        class="navbar__a <?=($selected == 'INICIO')? 'navbar__a--selected': ''?>">Inicio</a>
                 </li>
                 <li class="navbar__link">
-                    <a href="<?=BASE_DIR?>Donantes/list" class="navbar__a <?=($selected == 'DONANTES')? 'navbar__a--selected': ''?>">Donantes</a>
+                    <a href="#"
+                        class="navbar__a <?=($selected == 'INFORMACIÓN')? 'navbar__a--selected': ''?>">Información</a>
+                    <ul class="navbar__link-ul">
+                        <li class="navbar__link-ul-li">
+                            <a href="<?=BASE_DIR?>Donantes/list" class="navbar__link-ul-li-a">Ver Donantes</a>
+                        </li>
+                        <li class="navbar__link-ul-li">
+                            <a href="<?=BASE_DIR?>Pacientes/list" class="navbar__link-ul-li-a">Ver Pacientes</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="navbar__link">
-                    <a href="<?=BASE_DIR?>Usuario/register" class="navbar__a <?=($selected == 'REGISTRO')? 'navbar__a--selected': ''?>">Registrar</a>
+                    <a href="#"
+                        class="navbar__a <?=($selected == 'REGISTRO')? 'navbar__a--selected': ''?>">Registrar</a>
+                    <ul class="navbar__link-ul">
+                        <li class="navbar__link-ul-li">
+                            <a href="<?=BASE_DIR?>Account/register&type=donante" class="navbar__link-ul-li-a">Nuevo
+                                Donante</a>
+                        </li>
+                        <li class="navbar__link-ul-li">
+                            <a href="<?=BASE_DIR?>Account/register&type=paciente" class="navbar__link-ul-li-a">Nuevo
+                                Paciente</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="navbar__link">
-                    <a href="<?=BASE_DIR?>About/showAbout" class="navbar__a <?=($selected == 'ACERCA DE')? 'navbar__a--selected': ''?>">Acerca de</a>
+                    <a href="<?=BASE_DIR?>About/showAbout"
+                        class="navbar__a <?=($selected == 'ACERCA DE')? 'navbar__a--selected': ''?>">Acerca de</a>
                 </li>
             </ul>
         </nav>
     </header>
-
-<script type="text/javascript" src="<?=BASE_DIR;?>js/main.js"></script>

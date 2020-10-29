@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2020 a las 17:56:19
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.2.32
+-- Tiempo de generación: 26-10-2020 a las 04:03:19
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_bloodproject`
 --
-CREATE DATABASE IF NOT EXISTS `db_bloodproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `db_bloodproject`;
 
 DELIMITER $$
 --
@@ -204,7 +202,8 @@ INSERT INTO `tbl_departamento` (`id_departamento`, `nombre_departamento`) VALUES
 (11, 'La Paz'),
 (12, 'Sonsonate'),
 (13, 'Ahuachapán'),
-(14, 'Cuscatlán');
+(14, 'Cuscatlán'),
+(15, 'test');
 
 -- --------------------------------------------------------
 
@@ -219,17 +218,26 @@ CREATE TABLE `tbl_donantes` (
   `telefono_donante` text COLLATE utf8_spanish_ci NOT NULL,
   `id_departamento` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `prueba_donante` tinyint(1) NOT NULL,
-  `estado_donante` tinyint(1) NOT NULL,
-  `id_sangre` int(11) NOT NULL
+  `prueba_donante` enum('Yes','No') COLLATE utf8_spanish_ci NOT NULL,
+  `estado_donante` enum('Activo','Inactivo','') COLLATE utf8_spanish_ci NOT NULL,
+  `id_sangre` int(11) NOT NULL,
+  `carnet` enum('Yes','No') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'No',
+  `historial` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `contrasenia` longtext COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_donantes`
 --
 
-INSERT INTO `tbl_donantes` (`id_donante`, `nombre_donante`, `apellido_donante`, `telefono_donante`, `id_departamento`, `id_municipio`, `prueba_donante`, `estado_donante`, `id_sangre`) VALUES
-(1, 'Oscar', 'Palacios', '7588-9633', 1, 2, 1, 0, 1);
+INSERT INTO `tbl_donantes` (`id_donante`, `nombre_donante`, `apellido_donante`, `telefono_donante`, `id_departamento`, `id_municipio`, `prueba_donante`, `estado_donante`, `id_sangre`, `carnet`, `historial`, `contrasenia`) VALUES
+(1, 'Oscar', 'Palacios', '7588-9633', 1, 2, 'Yes', '', 1, 'No', NULL, ''),
+(4, 'Erick Josue', 'Saravia', '71021375', 1, 1, 'Yes', '', 1, 'No', NULL, ''),
+(5, 'Erick', 'Saravia', '7102-1375', 2, 11, '', '', 1, 'No', 'No tengo ningun dato', ''),
+(6, 'Erick', 'Saravia', '7102-1375', 2, 11, '', '', 1, 'No', 'No tengo ningun dato', ''),
+(7, 'erick', 'Saravia', '7102-1375', 1, 1, '', '', 1, 'No', 'adasd', ''),
+(8, 'erick', 'Saravia', '7102-1375', 1, 1, '', '', 1, 'No', 'adasd', ''),
+(9, 'asdasd', 'sdsdad', '7102-1375', 1, 1, '', '', 3, 'No', 'asdas', '');
 
 -- --------------------------------------------------------
 
@@ -245,15 +253,21 @@ CREATE TABLE `tbl_hospitales` (
   `encargado_hospital` text COLLATE utf8_spanish_ci NOT NULL,
   `telefonoEncargado_hospital` text COLLATE utf8_spanish_ci NOT NULL,
   `correoEncargado_hospital` text COLLATE utf8_spanish_ci NOT NULL,
-  `correoContacto_hospital` text COLLATE utf8_spanish_ci NOT NULL
+  `correoContacto_hospital` text COLLATE utf8_spanish_ci NOT NULL,
+  `id_departamento` int(11) NOT NULL,
+  `id_municipio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_hospitales`
 --
 
-INSERT INTO `tbl_hospitales` (`id_hospital`, `nombre_hospital`, `telefono_hospital`, `direccion_hospital`, `encargado_hospital`, `telefonoEncargado_hospital`, `correoEncargado_hospital`, `correoContacto_hospital`) VALUES
-(1, 'Bloom', '7459-9631', 'San Salvador, Av. Los Almendros, local 254', 'Nelson Zepeda', '7412-8520', 'zepetadr@gmail.com', 'bloomsv@salud.gob.sv');
+INSERT INTO `tbl_hospitales` (`id_hospital`, `nombre_hospital`, `telefono_hospital`, `direccion_hospital`, `encargado_hospital`, `telefonoEncargado_hospital`, `correoEncargado_hospital`, `correoContacto_hospital`, `id_departamento`, `id_municipio`) VALUES
+(1, 'Hospital Nacional de Niños Benjamín Bloom', '2225-4114', 'Boulevard De Los Héroes, San Salvador', '', '', '', '', 0, 0),
+(2, 'Hospital Médico Quirúrgico y Oncológico (HMQ del ISSS)', '2244-4777 y 2591-3000', 'Alameda Juan Pablo II, San Salvador', '', '', '', 'atencionalusuario@isss.gob.sv', 0, 0),
+(3, 'Hospital Nacional Rosales', '2231-9200', '25 Av Norte y Final Calle Arce, San Salvador', '', '', '', '', 0, 0),
+(4, 'Hospital Nacional San Juan de Dios de Santa Ana​', '2435 9500', '17 Avenida Sur, Barrio San Rafael, Santa Ana', '', '', '', '', 0, 0),
+(5, 'Hospital Militar Central', '2250-0080', 'Residencial San Luis y Avenida Bernal, San Salvador', '', '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -273,7 +287,144 @@ CREATE TABLE `tbl_municipio` (
 
 INSERT INTO `tbl_municipio` (`id_municipio`, `nombre_municipio`, `id_departamento`) VALUES
 (1, 'San Salvador', 1),
-(2, 'Aguilares', 1);
+(2, 'Aguilares', 1),
+(3, 'Apopa', 1),
+(4, 'Ayutuxtepeque', 1),
+(5, 'Cuscatancingo', 1),
+(6, 'San Martin', 1),
+(7, 'Cuscatancingo', 1),
+(8, 'San Martin', 1),
+(9, 'Mejicanos', 1),
+(10, 'Soyapango', 1),
+(11, 'San Miguel', 2),
+(12, 'Carolina', 2),
+(13, 'Chinameca', 2),
+(14, 'Chirilagua', 2),
+(15, 'Ciudad Barrios', 2),
+(16, 'Comacarán', 2),
+(17, 'Moncagua', 2),
+(18, 'El tránsito', 2),
+(19, 'Quelepa', 2),
+(20, 'San Jorge', 2),
+(21, 'El Congo', 3),
+(22, 'Chalchuapa', 3),
+(23, 'Candelaria de la Frontera', 3),
+(24, 'Coatepeque', 3),
+(25, 'Metapán', 3),
+(26, 'Texistepeque', 3),
+(27, 'Santa Ana', 3),
+(28, 'Masahuat', 3),
+(29, 'El Porvenir', 3),
+(30, 'San Antonio Pajonal', 3),
+(31, 'Alegría', 4),
+(32, 'Berlín', 4),
+(33, 'California', 4),
+(34, 'Concepción Batres', 4),
+(35, 'El Triunfo', 4),
+(36, 'Ereguayquín', 4),
+(37, 'Estanzuelas', 4),
+(38, 'Jiquilisco', 4),
+(39, 'Jucuapa', 4),
+(40, 'Usulután', 4),
+(41, 'Arambala', 5),
+(42, 'Perquín', 5),
+(43, 'Osicala', 5),
+(44, 'Lolotiquillo', 5),
+(45, 'Jocoro', 5),
+(46, 'Jocoaitique', 5),
+(47, 'El Divisadero', 5),
+(48, 'El Rosario', 5),
+(49, 'Cacaopera', 5),
+(50, 'San Francisco Gotera', 5),
+(51, 'Anamorós', 6),
+(52, 'Bolívar', 6),
+(53, 'Concepción de Oriente', 6),
+(54, 'Conchagua', 6),
+(55, 'El Carmen', 6),
+(56, 'El Sauce', 6),
+(57, 'Intipucá', 6),
+(58, 'La Unión', 6),
+(59, 'Lislique', 6),
+(60, 'Pasaquina', 6),
+(61, 'Antiguo Cuscatlán', 7),
+(62, 'Quezaltepeque', 7),
+(63, 'Ciudad Arce', 7),
+(64, 'Colón', 7),
+(65, 'Comasagua', 7),
+(66, 'Huizúcar', 7),
+(67, 'Jayaque', 7),
+(68, 'Zaragoza', 7),
+(69, 'La Libertad', 7),
+(70, 'Santa Tecla', 7),
+(71, 'Victoria', 8),
+(72, 'Tejutepeque', 8),
+(73, 'Sensuntepeque', 8),
+(74, 'San Isidro', 8),
+(75, 'Jutiapa', 8),
+(76, 'Ilobasco', 8),
+(77, 'Cinquera', 8),
+(78, 'Dolores', 8),
+(79, 'Guacotecti', 8),
+(80, 'Verapaz', 9),
+(81, 'Tecoluca', 9),
+(82, 'Tepetitán', 9),
+(83, 'Santo Domingo', 9),
+(84, 'Santa Clara', 9),
+(85, 'San Vicente', 9),
+(86, 'San Sebastián', 9),
+(87, 'San Ildefonso', 9),
+(88, 'San Lorenzo', 9),
+(89, 'Apastepeque', 9),
+(90, 'Tejutla', 10),
+(91, 'Santa Rita', 10),
+(92, 'San Rafael', 10),
+(93, 'Chalatenango', 10),
+(94, 'San Ignacio', 10),
+(95, 'San Francisco Lempa', 10),
+(96, 'Nueva Trinidad', 10),
+(97, 'Nueva Concepción', 10),
+(98, 'Comalapa', 10),
+(99, 'El Carrizal', 10),
+(100, 'Zacatecoluca', 11),
+(101, 'Santiago Nonualco', 11),
+(102, 'Santa María Ostuma', 11),
+(103, 'San Luis Talpa', 11),
+(104, 'San Juan Tepezontes', 11),
+(105, 'San Antonio Masahuat', 11),
+(106, 'Olocuilta', 11),
+(107, 'Jerusalén', 11),
+(108, 'El Rosario', 11),
+(109, 'Mercedes la Ceiba', 11),
+(110, 'Sonzacate', 12),
+(111, 'Sonsonate', 12),
+(112, 'San Julián', 12),
+(113, 'Nahuizalco', 12),
+(114, 'San Antonio del Monte', 12),
+(115, 'Armenia', 12),
+(116, 'Salcoatitán', 12),
+(117, 'Juayúa', 12),
+(118, 'Izalco', 12),
+(119, 'Acajutla', 12),
+(120, 'Ahuachapán', 13),
+(121, 'Turín', 13),
+(122, 'Tacuba', 13),
+(123, 'San Pedro Puxtla', 13),
+(124, 'San Lorenzo', 13),
+(125, 'Guaymango', 13),
+(126, 'Concepción de Ataco', 13),
+(127, 'Jujutla', 13),
+(128, 'Apaneca', 13),
+(129, 'Atiquizaya', 13),
+(130, 'Tenancingo', 14),
+(131, 'Suchitoto', 14),
+(132, 'Santa Cruz Michapa', 14),
+(133, 'San Ramón', 14),
+(134, 'San Rafael Cedros', 14),
+(135, 'San Pedro Perulapán', 14),
+(136, 'San Cristóbal', 14),
+(137, 'Cojutepeque', 14),
+(138, 'Candelaria', 14),
+(139, 'El Carmen', 14);
 
 -- --------------------------------------------------------
 
@@ -290,16 +441,20 @@ CREATE TABLE `tbl_pacientes` (
   `id_sangre` int(11) NOT NULL,
   `id_departamento` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `estado_paciente` tinyint(1) NOT NULL,
-  `id_hospital` int(11) NOT NULL
+  `estado_paciente` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo',
+  `id_hospital` int(11) NOT NULL,
+  `contrasenia` longtext COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_pacientes`
 --
 
-INSERT INTO `tbl_pacientes` (`id_paciente`, `nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`) VALUES
-(2, 'Luis', 'Chavez', '7485-9632', 'luisv@gmail.com', 1, 1, 2, 1, 1);
+INSERT INTO `tbl_pacientes` (`id_paciente`, `nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`, `contrasenia`) VALUES
+(2, 'Luis', 'Chavez', '7485-9632', 'luisv@gmail.com', 1, 1, 2, '', 1, ''),
+(3, 'erick', 'Saravia', '7102-1375', '', 2, 1, 1, '', 1, ''),
+(4, 'erick', 'Saravia', '7102-1375', '', 2, 1, 1, '', 1, ''),
+(5, 'erick', 'Saravia', '7102-1375', '', 2, 1, 1, '', 1, '');
 
 -- --------------------------------------------------------
 
@@ -317,8 +472,16 @@ CREATE TABLE `tbl_sangre` (
 --
 
 INSERT INTO `tbl_sangre` (`id_sangre`, `nombre_sangre`) VALUES
-(1, 'ORH+'),
-(2, 'ORH-');
+(1, 'ORH+ (ORH positivo)'),
+(2, 'ORH- (ORH negativo)'),
+(3, 'O- (O negativo)'),
+(4, 'O+ (O positivo)'),
+(5, 'A- (A negativo)'),
+(6, 'A+ (A positivo)'),
+(7, 'B- (B negativo)'),
+(8, 'B+ (B positivo)'),
+(9, 'AB- (AB negativo)'),
+(10, 'AB+ (AB positivo)');
 
 -- --------------------------------------------------------
 
@@ -430,37 +593,37 @@ ALTER TABLE `tbl_sangre`
 -- AUTO_INCREMENT de la tabla `tbl_departamento`
 --
 ALTER TABLE `tbl_departamento`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_donantes`
 --
 ALTER TABLE `tbl_donantes`
-  MODIFY `id_donante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_donante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_hospitales`
 --
 ALTER TABLE `tbl_hospitales`
-  MODIFY `id_hospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_hospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_municipio`
 --
 ALTER TABLE `tbl_municipio`
-  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_pacientes`
 --
 ALTER TABLE `tbl_pacientes`
-  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sangre`
 --
 ALTER TABLE `tbl_sangre`
-  MODIFY `id_sangre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sangre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas

@@ -1,18 +1,90 @@
 <main>
-    <table border="1">
-        <thead>
-            <td><strong>Nombre</strong></td>
-            <td><strong>Apellido</strong></td>
-            <td><strong>telefono</strong></td>
-            <td><strong>Estado</strong></td>
-        </thead>
-        <?php foreach ($list as $donante) : ?>
-        <tbody>
-            <td><?php echo $donante->nombre_donante ?></td>
-            <td><?php echo $donante->apellido_donante ?></td>
-            <td><?php echo $donante->telefono_donante ?></td>
-            <td><?php echo $donante->estado_donante ?></td>
-        </tbody>
-        <?php endforeach; ?>    
-    </table>
+    <div class="donantes__view">
+        <div class="donantes">
+            <div class="donantes__container-title">
+                <h3 class="donantes__title">Información de los donantes</h3>
+            </div>
+            <div class="donantes__container-img">
+                <img src="<?= BASE_DIR; ?>assets/images/donantes.png" alt="imagen alusiva a los donantes"
+                    class="donantes__img">
+            </div>
+
+            <div class="donantes__txtregistrar">
+                <p>¿Quieres donar? <span>Puedes registrarte como donante Aquí</span></p>
+                <a href="<?=BASE_DIR?>Account/register&type=donante" class="button button--outline"> Registro de Donante ➤</a>
+            </div>
+        </div>
+
+        <div class="donantes__container">
+            <!--
+        <div class="donantes__form">
+
+            <div class="donantes__select-tittle">
+                <p>Departamento</p>
+                <div class="select">
+
+                    <select>
+                        <option>--Select--</option>
+                      <?php foreach ($departamentosList as $departamento) { ?>
+                            <option value="<?=$departamento->nombre_departamento?>"><?=$departamento->nombre_departamento?></option>
+                        <?php } ?>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+            </div>
+            <div class="donantes__select-tittle">
+                <p>Municipio</p>
+                <div class="select">
+                    <select>
+                        <option>--Select--</option>
+                        <option>Hello 1</option>
+                        <option>Hello 2</option>
+                        <option>Hello 3</option>
+                        <option>Hello 4</option>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+            </div>
+            <div class="donantes__input">
+                <input type="text" placeholder="Buscar" />
+                <span>
+                    <button><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>    
+        -->
+
+
+        <div class="content_table">
+            <table class="table_full" id="tblDonantes">
+                <thead class="title_table">
+                    <th data-titulo="nombre"><strong>Nombre</strong></th>
+                    <th data-titulo="apellido"><strong>Apellido</strong></th>
+                    <th data-titulo="departamento"><strong>Departamento</strong></th>
+                    <th data-titulo="municipio"><strong>Municipio</strong></th>
+                    <th data-titulo="tipoSangre"><strong>Tipo Sangre</strong></th>
+                    <th data-titulo="telefono"><strong>Teléfono</strong></th>
+                    <th data-titulo="estado"><strong>Estado</strong></th>
+                </thead>
+                <tbody>
+                <?php foreach ($list as $donante) : ?>
+                
+                    <tr class="body_table">
+                        <td data-titulo="Nombre: "><strong><?php echo $donante->nombre_donante ?></strong></td>
+                        <td data-titulo="Apellido: "><strong><?php echo $donante->apellido_donante ?></strong></td>
+                        <td data-titulo="Departamento: "><strong> <?php echo $donante->nombre_departamento ?> </strong></td>
+                        <td data-titulo="Municipio: "><strong><?php echo $donante->nombre_municipio ?></strong></td>
+                        <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong><?php echo $donante->nombre_sangre ?></strong></td>
+                        <td data-titulo="Telefono: "><strong><?php echo $donante->telefono_donante ?></strong></td>
+                        <td data-titulo="Estado: "><strong><?php echo $donante->estado_donante ?></strong></td>
+                    </tr>
+                
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </main>

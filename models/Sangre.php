@@ -9,7 +9,7 @@ class Sangre extends MySqlConnection{
     private $id_sangre;
     private $nombre_sangre;
 
-    public function setId_sangre(){
+    public function setId_sangre($id_sangre){
         $this->id_sangre = $id_sangre;
     }
 
@@ -17,7 +17,7 @@ class Sangre extends MySqlConnection{
         return $this->id_sangre;
     }
 
-    public function setNombre_sangre(){
+    public function setNombre_sangre($nombre_sangre){
         $this->nombre_sangre = $nombre_sangre;
     }
 
@@ -27,6 +27,22 @@ class Sangre extends MySqlConnection{
     
     public function __construct()
     {
-    parent::__construct();
+        parent::__construct();
+    }
+
+    public function list ($page = 1, $limit = 20, $filter = [], $sort = []){
+        $offset = ($page - 1) * $limit;
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " d";
+        $sql .= " limit " . $limit . " offset " . $offset;
+        // echo "<p></p>" . $sql . "<br>";
+
+        $data = array();
+        if ($result = $this->db->query($sql, MYSQLI_USE_RESULT)) {
+
+          while ($obj = $result->fetch_object()) {
+            array_push($data, $obj);
+          }
+        }
+        return $data;
     }
 }
