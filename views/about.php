@@ -8,7 +8,7 @@
             <img src="<?= BASE_DIR; ?>assets/images/donacion-about.png" alt="imagen alusiva a los donantes" class="about__img-info">
             <div class="about__text-info">
                 <span>Bienvenido!</span>
-                U-Safe surge de la idea de ayudar a todas las personas que necesiten un donante de plasma y para las personas que quieran donar plasma puedan tener una plataforma mediante la cual poder encontrar un donador y poder ayudar siendo un donante.
+                ADS surge de la idea de ayudar a todas las personas que necesiten un donante de plasma y para las personas que quieran donar plasma puedan tener una plataforma mediante la cual poder encontrar un donador y poder ayudar siendo un donante. ADS corresponde a las siglas de Ayuda, Dona, Salva.
             </div>
         </div>
         

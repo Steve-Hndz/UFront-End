@@ -57,17 +57,6 @@ class DonantesController
   {
     require_once "models/Donante.php";
 
-    /* Borrar este bloque es solo para testing */
-      $_POST['nombre_donante'] = "Erick Josue";
-      $_POST['apellido_donante'] = "Saravia";
-      $_POST['telefono_donante'] = "71021375";
-      $_POST['id_sangre'] = "1";
-      $_POST['id_departamento'] = "1";
-      $_POST['id_municipio'] = "1";
-      $_POST['prueba_donante'] = "Yes";
-      $_POST['carnet'] = "No";
-      $_POST['historial'] = "";
-    /* Dejar de borrar */
     if (isset($_POST['nombre_donante']) && isset($_POST['apellido_donante']) && isset($_POST['telefono_donante']) && 
     isset($_POST['id_sangre']) && isset($_POST['id_departamento']) && isset($_POST['id_municipio']) && isset($_POST['prueba_donante'])) { // remove !
       $donante = new Donante();

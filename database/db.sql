@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2020 a las 23:11:22
+-- Tiempo de generación: 26-10-2020 a las 04:03:19
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_bloodproject`
 --
-CREATE DATABASE IF NOT EXISTS `db_bloodproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `db_bloodproject`;
 
 DELIMITER $$
 --
@@ -221,7 +219,7 @@ CREATE TABLE `tbl_donantes` (
   `id_departamento` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `prueba_donante` enum('Yes','No') COLLATE utf8_spanish_ci NOT NULL,
-  `estado_donante` enum('Active','Inactive','') COLLATE utf8_spanish_ci NOT NULL,
+  `estado_donante` enum('Activo','Inactivo','') COLLATE utf8_spanish_ci NOT NULL,
   `id_sangre` int(11) NOT NULL,
   `carnet` enum('Yes','No') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'No',
   `historial` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -234,7 +232,12 @@ CREATE TABLE `tbl_donantes` (
 
 INSERT INTO `tbl_donantes` (`id_donante`, `nombre_donante`, `apellido_donante`, `telefono_donante`, `id_departamento`, `id_municipio`, `prueba_donante`, `estado_donante`, `id_sangre`, `carnet`, `historial`, `contrasenia`) VALUES
 (1, 'Oscar', 'Palacios', '7588-9633', 1, 2, 'Yes', '', 1, 'No', NULL, ''),
-(4, 'Erick Josue', 'Saravia', '71021375', 1, 1, 'Yes', '', 1, 'No', NULL, '');
+(4, 'Erick Josue', 'Saravia', '71021375', 1, 1, 'Yes', '', 1, 'No', NULL, ''),
+(5, 'Erick', 'Saravia', '7102-1375', 2, 11, '', '', 1, 'No', 'No tengo ningun dato', ''),
+(6, 'Erick', 'Saravia', '7102-1375', 2, 11, '', '', 1, 'No', 'No tengo ningun dato', ''),
+(7, 'erick', 'Saravia', '7102-1375', 1, 1, '', '', 1, 'No', 'adasd', ''),
+(8, 'erick', 'Saravia', '7102-1375', 1, 1, '', '', 1, 'No', 'adasd', ''),
+(9, 'asdasd', 'sdsdad', '7102-1375', 1, 1, '', '', 3, 'No', 'asdas', '');
 
 -- --------------------------------------------------------
 
@@ -438,7 +441,7 @@ CREATE TABLE `tbl_pacientes` (
   `id_sangre` int(11) NOT NULL,
   `id_departamento` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `estado_paciente` tinyint(1) NOT NULL,
+  `estado_paciente` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo',
   `id_hospital` int(11) NOT NULL,
   `contrasenia` longtext COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -448,7 +451,10 @@ CREATE TABLE `tbl_pacientes` (
 --
 
 INSERT INTO `tbl_pacientes` (`id_paciente`, `nombre_paciente`, `apellido_paciente`, `telefono_paciente`, `correo_paciente`, `id_sangre`, `id_departamento`, `id_municipio`, `estado_paciente`, `id_hospital`, `contrasenia`) VALUES
-(2, 'Luis', 'Chavez', '7485-9632', 'luisv@gmail.com', 1, 1, 2, 1, 1, '');
+(2, 'Luis', 'Chavez', '7485-9632', 'luisv@gmail.com', 1, 1, 2, '', 1, ''),
+(3, 'erick', 'Saravia', '7102-1375', '', 2, 1, 1, '', 1, ''),
+(4, 'erick', 'Saravia', '7102-1375', '', 2, 1, 1, '', 1, ''),
+(5, 'erick', 'Saravia', '7102-1375', '', 2, 1, 1, '', 1, '');
 
 -- --------------------------------------------------------
 
@@ -593,7 +599,7 @@ ALTER TABLE `tbl_departamento`
 -- AUTO_INCREMENT de la tabla `tbl_donantes`
 --
 ALTER TABLE `tbl_donantes`
-  MODIFY `id_donante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_donante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_hospitales`
@@ -611,7 +617,7 @@ ALTER TABLE `tbl_municipio`
 -- AUTO_INCREMENT de la tabla `tbl_pacientes`
 --
 ALTER TABLE `tbl_pacientes`
-  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sangre`

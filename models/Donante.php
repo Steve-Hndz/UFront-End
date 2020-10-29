@@ -230,8 +230,7 @@ class Donante extends MySqlConnection implements IMysqlActions {
   {
     $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre_donante,apellido_donante,estado_donante,id_departamento,id_municipio,id_sangre,prueba_donante,telefono_donante,carnet,historial) VALUES 
     ('" . $this->getNombre_donante() . "','" . $this->apellido_donante . "','Created'," . $this->id_departamento . ","  . $this->id_municipio . "," . $this->id_sangre . ",'" . $this->prueba_donante . "','" . $this->telefono_donante . "','" . $this->carnet . "','" . $this->historial . "')";
-    // $query = $this->db->prepare("INSERT INTO " . self::TABLE_NAME . " ""
-    // echo $sql . "<br>";
+    $result = false;
     if (!$result = $this->db->query($sql)) {
       return "Falló la creación del registro: (" . $this->db->errno . ") " . $this->db->error;
     }
