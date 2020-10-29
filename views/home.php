@@ -7,12 +7,12 @@
                 <p class="presentation__description">Ayuda, Dona, Salva. Es una nuevo proyecto propuesto por estudiantes de la carrera de Sistemas Informáticos de la Universidad Nacional de El Salvador, orientado a ayudar a muchas personas en la actual situación a la que se enfrenta el país, uniendo así tanto a pacientes que necesitan de donaciones de plasma, así como de personas dispuestas a ayudar con sus donaciones. Únete tú también.</p>
             </div>
             <div class="presentation__buttons">
-                <button class="button button--fill">
+                <a href="<?=BASE_DIR?>Donantes/list" class="button button--fill">
                     Donantes
-                </button>
-                <button class="button button--outline">
+                </a>
+                <a href="<?=BASE_DIR?>Account/register&type=donante" class="button button--outline">
                     Registrarme ➤
-                </button>
+                </a>
             </div>
         </div>
         <div class="presentation__container-img">

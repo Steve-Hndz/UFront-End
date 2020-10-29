@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/pacientes.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>assets/css/about.css">
     <title>Ayuda/Dona/Salva</title>
-
 </head>
 
 <body>

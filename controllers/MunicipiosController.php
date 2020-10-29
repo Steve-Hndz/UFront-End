@@ -9,6 +9,7 @@ class MunicipiosController
 
   public function list()
   {
+    
     require_once "models/Municipio.php";
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
@@ -18,6 +19,7 @@ class MunicipiosController
 
     $municipio = new Municipio();
     $list = $municipio->list($page, $limit, $filter, $sort);
+    var_dump($list);
 
     $html = '<option disabled selected>Municipio</option>';
     foreach ($list as $municipios) { 
@@ -28,7 +30,7 @@ class MunicipiosController
 
   public function create()
   {
-    require_once "models/Municipio.php";
+    require_once BASE_DIR . "models/Municipio.php";
     //if (!isset($_POST['name'])) {
       // $name = $_POST['name'] ;
       // $id_departamento = $_POST['id_departamento'];
@@ -47,5 +49,6 @@ class MunicipiosController
 
 $municipios = new MunicipiosController();
 if (isset($_POST['consulta'])){
+  var_dump($_POST['consulta']);
   echo $municipios->list();
 }
