@@ -77,7 +77,9 @@
                                 <td data-titulo="Hospital"><strong><?php echo $paciente->nombre_hospital ?></strong></td>
                                 <td data-titulo="Tipo de Sangre: " class="tipe_blood"><strong><?php echo $paciente->nombre_sangre ?></strong></td>
                                 <td data-titulo="Telefono: "><strong><?php echo $paciente->telefono_paciente ?></strong></td>
-                                <td data-titulo="Estado: "><strong><?php echo $paciente->estado_paciente ?></strong></td>
+                                <td data-titulo="Estado: "><strong><?php if ($paciente->estado_paciente == "0") {
+                                   echo "Activo";
+                                } else { echo "Inactivo";} ?></strong></td>
                             </tr>
                         
                     <?php endforeach; ?>
